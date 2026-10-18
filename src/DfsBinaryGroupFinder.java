@@ -1,7 +1,10 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 public class DfsBinaryGroupFinder implements BinaryGroupFinder {
    /**
@@ -34,7 +37,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
     @Override
     public List<Group> findConnectedGroups(int[][] image) { 
 
-        List<Group> answer = new ArrayList<>();
+        // List<Group> answer = new ArrayList<>();
 
         //make a graph of the image to traverse over to get the groups
         // groups should all be unconnected islands so traversing the keys
@@ -44,29 +47,89 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         
         for(int r = 0 ;  r< image.length ; r++){
             for(int c = 0 ; c < image[0].length ; c++){
-                Point curPoint = new Point(r, c);
 
+                if(image[r][c] == 0){
+                    continue;
+                }
+
+                Point curPoint = new Point(r, c);
+                
                 ArrayList<Point> neighbors = getNeighbors(graph, image, curPoint);
                 graph.putIfAbsent(curPoint, neighbors);
                 
-                System.out.println(curPoint+ "  |  Neighbors: "+  neighbors);
+                // System.out.println(curPoint+ "  |  Neighbors: "+  neighbors); // for debugging ONLY
             }
         }
 
+        List<Group> answer = imageDFS(graph);
+        // System.out.println(" GROUP: "+ answer); // for debugging ONLY
         return answer;
     }
 
 
-    // make a record for a row column pair for DFS/BFS
+    /*
+        Record Definition of a row & column pair used for BFS
+    */
     public record Point(int row, int col){};
     
+    /*
+        Stack based BFS over a graph to identify pixel islands within the image matrix 
+
+        loops over all keys of the graph and if it has not already been visited begin a 
+        bfs and return the island as a Group
+
+        Returs a List of groups made from the original image matrix
+    */
+    public List<Group> imageDFS(Map<Point, ArrayList<Point>> graph){
+        List<Group> connectedGroupList = new ArrayList<>();
+        Stack<Point> stack = new Stack<>();
+        HashSet<Point> visited = new HashSet<>(); 
+        
+        for(Point key : graph.keySet()){
+
+            if(visited.contains(key)){continue;}
+
+            //Initial set up for dfs of a Key/Point
+            stack.push(key);
+            visited.add(key);
+            // ArrayList<Group> curGroupList = new ArrayList<>();
+
+            int groupX = key.col();
+            int groupY = key.row();
+            int groupSize = 1; // default to 1 so no potential division by zero
+
+            //Stack Based DFS
+            while(!stack.isEmpty()) { 
+                Point cur = stack.pop();
+                      
+                for(Point neighbor : graph.get(cur)){
+                    if(visited.add(neighbor)){
+
+                        stack.push(neighbor);
+                        groupSize++;
+                        groupY += neighbor.row();
+                        groupX += neighbor.col();
+                    }
+                }
+            }
+
+            Group curGroup = new Group(groupSize, new Coordinate(groupX/groupSize, groupY/groupSize));
+
+            connectedGroupList.add(curGroup);
+            System.out.println("CUR GROUP: "+ curGroup); // for debugging ONLY
+        }
+
+        Collections.sort(connectedGroupList);
+        return connectedGroupList;
+    }
+
 
     /* 
         gets the neighboring points of the provided Point 
     */
     public ArrayList<Point> getNeighbors(Map<Point, ArrayList<Point>>  graph, int[][] image, Point cur){
         int rLen = image.length;
-        int cLen = image.length;
+        int cLen = image[0].length;
 
         // define directions for DFS/BFS
         int[][] dirs = new int[][]{
@@ -81,7 +144,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         for(int[] dir: dirs){
 
             //verify a valid neigbor to add to neighbor list
-            if(cur.row() + dir[0] >= 0    &&
+            if( cur.row() + dir[0] >= 0   &&
                 cur.row() + dir[0] < rLen &&
                 cur.col() + dir[1]>= 0    &&
                 cur.col() + dir[1] < cLen &&
