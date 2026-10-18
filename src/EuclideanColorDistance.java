@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class EuclideanColorDistance implements ColorDistanceFinder {
     /**
      * Returns the euclidean color distance between two hex RGB colors.
@@ -19,6 +21,70 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
      */
     @Override
     public double distance(int colorA, int colorB) {
-        return 0;
+        /* 
+            hex values are base 16 not base 10
+
+            EXAMPLE: Green portion 34  0x123456
+
+            Base 10: (3 X 10)+(4 X 1) = 34  
+            Base 16: (3 X 16)+(4 X 1) = 52  ---> >> 16 ---> 00110100  
+
+            0xFF is 8 1's in binary --> 1111111 so an "&" flips all bits to zero that arent the first 8 bits
+            this isolates the value we want in the greens place in this example because shifting the green still 
+            leaves the remaining red/greater bits
+
+            THIS IS A MASK
+         */
+
+
+        int R1 = colorA >> 24 & 0xFF;
+        int G1 = colorA >> 16 & 0xFF;
+        int B1 = colorA >> 8  & 0xFF;
+
+        int R2 = colorB >> 24 & 0xFF;
+        int G2 = colorB >> 16 & 0xFF;
+        int B2 = colorB >> 8  & 0xFF;
+
+        double eDist = Math.sqrt(
+            Math.pow(R1 - R2, 2) +
+            Math.pow(G1 - G2, 2) +
+            Math.pow(B1 - B2, 2)  
+        );
+
+        return eDist;
+    }
+
+    public static void main(String[] args) {
+        EuclideanColorDistance d = new EuclideanColorDistance();
+
+        //double val =  d.distance(0x123456,0x789123);
+        int colorA = 0xFF3456;
+        int colorB = 0x7891FF;
+
+        int R1 = colorA >> 16 & 0xFF;
+        int G1 = colorA >> 8  & 0xFF;
+        int B1 = colorA  & 0xFF;
+
+        int R2 = colorB >> 16 & 0xFF;
+        int G2 = colorB >> 8  & 0xFF;
+        int B2 = colorB & 0xFF;
+
+        double eDist = Math.sqrt(
+            Math.pow(R1 - R2, 2) +
+            Math.pow(G1 - G2, 2) +
+            Math.pow(B1 - B2, 2)  
+        );
+        List<Integer> A = List.of(R1 , G1, B1);
+        List<Integer> B = List.of(R2 , G2, B2);
+
+        System.out.println("A:  "+A);
+        System.out.println("B:  "+B);
+
+
+        System.out.println(eDist);
+
+        // System.out.println(0x789123 >> 16 & 0xFF);
+        // System.out.println(120 << 16);
+
     }
 }
