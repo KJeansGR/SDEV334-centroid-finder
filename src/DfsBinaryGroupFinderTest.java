@@ -29,4 +29,105 @@ public class DfsBinaryGroupFinderTest {
         Collections.sort(actual);
         assertEquals(expected, actual);
     }
+
+    
+    @Test
+    public void test_DfsBinaryGroupFinder_emptyImage() {
+        int[][] image = {
+            {0,0,0},
+            {0,0,0},
+            {0,0,0}
+        };
+
+        DfsBinaryGroupFinder finder = new DfsBinaryGroupFinder();
+
+        List<Group> actual = finder.findConnectedGroups(image);
+
+        assertEquals(List.of(), actual);
+    }
+
+    @Test
+    public void test_DfsBinaryGroupFinder_singlePixel() {
+        int[][] image = {
+            {0,0,0},
+            {0,0,1},
+            {0,0,0}
+        };
+
+        DfsBinaryGroupFinder finder = new DfsBinaryGroupFinder();
+
+        List<Group> expected = List.of(
+            new Group(1, new Coordinate(2, 1))
+        );
+
+        assertEquals(expected, finder.findConnectedGroups(image));
+    }
+
+    @Test
+    public void test_DfsBinaryGroupFinder_allConnected() {
+        int[][] image = {
+            {1,1,1},
+            {1,1,1}
+        };
+
+        DfsBinaryGroupFinder finder = new DfsBinaryGroupFinder();
+
+        List<Group> expected = List.of(
+            new Group(6, new Coordinate(1, 0))
+        );
+
+        assertEquals(expected, finder.findConnectedGroups(image));
+    }
+
+    @Test
+    public void test_DfsBinaryGroupFinder_horizontalGroups() {
+        int[][] image = {
+            {1,1,0,1,0,1,1}
+        };
+
+        DfsBinaryGroupFinder finder = new DfsBinaryGroupFinder();
+
+        List<Group> expected = List.of(
+            new Group(1, new Coordinate(3, 0)),
+            new Group(2, new Coordinate(0, 0)),
+            new Group(2, new Coordinate(5, 0))
+        );
+
+        assertEquals(expected, finder.findConnectedGroups(image));
+    }
+
+    @Test
+    public void test_DfsBinaryGroupFinder_nonsquareImage() {
+        int[][] image = {
+            {0,0,1,1},
+            {0,0,1,0}
+        };
+
+        DfsBinaryGroupFinder finder = new DfsBinaryGroupFinder();
+
+        List<Group> expected = List.of(
+            new Group(3, new Coordinate(2, 0))
+        );
+
+        assertEquals(expected, finder.findConnectedGroups(image));
+    }
+
+    @Test
+    public void test_DfsBinaryGroupFinder_sortedOutput() {
+        int[][] image = {
+            {1,1,1,0,1},
+            {0,0,0,0,0}
+        };
+
+        DfsBinaryGroupFinder finder = new DfsBinaryGroupFinder();
+
+        List<Group> expected = List.of(
+            new Group(1, new Coordinate(4, 0)),
+            new Group(3, new Coordinate(1, 0))
+        );
+
+        assertEquals(expected, finder.findConnectedGroups(image));
+    }
+
+
 }
