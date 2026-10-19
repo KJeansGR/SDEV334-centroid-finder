@@ -116,7 +116,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
             Group curGroup = new Group(groupSize, new Coordinate(groupX/groupSize, groupY/groupSize));
 
             connectedGroupList.add(curGroup);
-            System.out.println("CUR GROUP: "+ curGroup); // for debugging ONLY
+            //System.out.println("CUR GROUP: "+ curGroup); // for debugging ONLY
         }
 
         Collections.sort(connectedGroupList);
