@@ -60,4 +60,13 @@ public class DistanceImageBinarizer implements ImageBinarizer {
     public BufferedImage toBufferedImage(int[][] image) {
         return null;
     }
+
+    public static void main(String[] args) {
+        int width = 1920;
+        int height = 1080;
+
+        BufferedImage testImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+        System.out.println(testImg.getWidth());
+    }
 }
