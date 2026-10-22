@@ -53,7 +53,8 @@ public class DistanceImageBinarizer implements ImageBinarizer {
             for(int c = 0; c < col ; c++){
 
                 int color;
-
+                
+                //the & 0x00FFFFFF is to ensure the Alpha bits are 0
                 if(distanceFinder.distance(image.getRGB(c, r) & 0x00FFFFFF, targetColor) < threshold){
                     color = 1;
                 }
@@ -62,9 +63,9 @@ public class DistanceImageBinarizer implements ImageBinarizer {
                 }
                 answer[r][c] = color;
 
-                 //System.out.print(color+ " | ");
+                 System.out.print(color+ " | ");
             }
-          // System.out.println();
+          System.out.println();
         }
         return answer;
     }
