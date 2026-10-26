@@ -82,7 +82,7 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
         // System.out.println("B:  "+B);
 
 
-        System.out.println(val);
+        // System.out.println(val);
 
         //System.out.println(0x255 >> 4);
         // System.out.println(120 << 16);

@@ -28,8 +28,8 @@ public class DistanceImageBinarizerTest {
 
     @Test
     void colorOutsideThresholdBecomesBlack() {
-        int targetColor = 0x000000;
-        int threshold = 10;
+        int targetColor = 0xFFFFFF;
+        int threshold = 400;
 
         ColorDistanceFinder finder = new EuclideanColorDistance();
         DistanceImageBinarizer binarizer =
@@ -37,7 +37,7 @@ public class DistanceImageBinarizerTest {
 
         BufferedImage image =
             new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
-        image.setRGB(0, 0, 0xFF0000);
+        image.setRGB(0, 0, 0x000000);
 
         int[][] result = binarizer.toBinaryArray(image);
 

@@ -63,9 +63,9 @@ public class DistanceImageBinarizer implements ImageBinarizer {
                 }
                 answer[r][c] = color;
 
-                 System.out.print(color+ " | ");
+                //  System.out.print(color+ " | ");
             }
-          System.out.println();
+        //   System.out.println();
         }
         return answer;
     }
