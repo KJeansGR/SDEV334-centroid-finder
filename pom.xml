@@ -38,6 +38,14 @@
         <version>5.13.4</version>
         <scope>test</scope>
     </dependency>
+
+    <!-- Source: https://mvnrepository.com/artifact/org.bytedeco/javacv-platform -->
+    <dependency>
+        <groupId>org.bytedeco</groupId>
+        <artifactId>javacv-platform</artifactId>
+        <version>1.5.14</version>
+        <scope>compile</scope>
+    </dependency>
 </dependencies>
 
     <build>
@@ -60,7 +68,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.6.4</version>
                 <configuration>
-                    <mainClass>ImageSummaryApp</mainClass>
+                    <mainClass>VideoDependencyTest</mainClass>
                 </configuration>
             </plugin>
         </plugins>
