@@ -14,3 +14,9 @@ maven jar entry with video -->
 }
 test for errors
 ```
+
+# updated plans
+
+- create a main class that will construct general necessities like a class declarations (imageBinarizer,Java2DFrameConverter, ColorDistanceFinder, ImageGroupFinder, Frame) to be used for within the video processing loop on each frame.
+- create helper classes that append structured information (viudeo timestamp, x coordiniate of largest groups centroid, y coordiniate of largest groups centroid ) per frame to a list
+- from that list construct the final csv file and save it
