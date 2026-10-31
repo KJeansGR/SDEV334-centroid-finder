@@ -23,7 +23,7 @@ public class VideoDependencyTest {
             Java2DFrameConverter converter = new Java2DFrameConverter();
 
             // Parse the target color from a hex string (format RRGGBB) into a 24-bit integer (0xRRGGBB)
-            String hexTargetColor = "000000";
+            String hexTargetColor = "0000FF";
             int targetColor = 0;
             try {
                 targetColor = Integer.parseInt(hexTargetColor, 16);

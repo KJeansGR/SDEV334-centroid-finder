@@ -78,7 +78,7 @@ Everything after videoprocessor.jar is command line arguments that will be taken
 ## Wave 1: Planning
 Talk with your partner about how you might accomplish the overall goal! THIS MUST BE DONE IN AN OBJECT ORIENTED WAY. YOU WILL NOT RECIEVE CREDIT IF ALL OF THE NEW LOGIC IS IN ONE BIG NEW CLASS. Really think about what the different components are! Look at centroid finder and consider looking back at Truffula, Screwtape, and Ramblebot on how you might architect your code.  Think about how the arguments are parsed, what existing classes you can RE-USE. Do not just do everything over again from scratch! Think about how to write good tests for the various components.
 
-Make a file "plan.md" that details your plans. Write out a plan and draw a picture of what your architecture is going to look like. Please write this plan yourself. You can consult an AI for advice, but don't just copy-paste a plan it suggests. If you want to make your plan in Google Docs, please have plan.md include a link to your document and make sure the document is shared with auberonedu@gmail.com.
+Make a file "plan.md" that details your plans. Write out a plan and draw a picture of what your architecture is going to look like. Please write this plan yourself. You can consult an AI for advice, but don't just copy-paste a plan it suggests. If you want to make your plan in Google Docs, please have plan.md include a link to your document and make sure the document is shared with the instructor.
 
 Your plan doesn't need to be perfect! It will almost certainly change as you implement.
 
