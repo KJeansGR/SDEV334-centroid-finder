@@ -1,6 +1,8 @@
 // import org.bytedeco.javacv.FFmpegFrameGrabber;
 // import org.bytedeco.javacv.Java2DFrameConverter;
 import java.awt.image.BufferedImage;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -8,7 +10,7 @@ import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.Frame;
 import org.bytedeco.javacv.Java2DFrameConverter;
 
-public class VideoDependencyTest {
+public class VideoProcessorApp {
     public static void main(String[] args) {
 
         
@@ -16,6 +18,8 @@ public class VideoDependencyTest {
             System.out.println("ARGS error: Please provide the path to a video file.");
             return;
         }
+
+        List<String> toCSV = new ArrayList<>();
 
         try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(args[0])) {
             grabber.start();
@@ -37,7 +41,6 @@ public class VideoDependencyTest {
             ImageBinarizer binarizer = new DistanceImageBinarizer(distanceFinder, targetColor, 50);
             ImageGroupFinder groupFinder = new BinarizingImageGroupFinder(binarizer, new DfsBinaryGroupFinder());
 
-
             Frame frame;
             int count = 0;
 
@@ -50,17 +53,34 @@ public class VideoDependencyTest {
                 double seconds = grabber.getTimestamp() / 1_000_000.0;
                 if (!groups.isEmpty()) {
                     Group largest = Collections.max(groups);
+                    toCSV.add(String.valueOf(seconds) + "," + largest.centroid().x() + "," + largest.centroid().y() );
 
                     System.out.println("Largest group: " + largest + " at " + seconds + " seconds");
+                } else{
+                    toCSV.add(String.valueOf(seconds) + ",-1,-1" );
                 }
-                System.out.println("Connected groups found: " + groups.size());
-                System.out.println("Processing frame: " + count);
+
+                System.out.println("Connected groups found: " + groups.size() + " | Processing frame: " + count);
             }
+
             System.out.println("Total frames processed: " + count);
             grabber.stop();
+
         } catch (Exception e) {
             System.err.println("Could not read the video: " + e.getMessage());
             e.printStackTrace();
         }
+
+        // Write the groups information to a CSV file "VideoGroups.csv".
+        try (PrintWriter writer = new PrintWriter("VideoGroups.csv")) {
+            for (String entry : toCSV) {
+                writer.println(entry);
+            }
+            System.out.println("Groups summary saved as VideoGroups.csv");
+        } catch (Exception e) {
+            System.err.println("Error writing VideoGroups.csv");
+            e.printStackTrace();
+        }
+    
     }
 }
