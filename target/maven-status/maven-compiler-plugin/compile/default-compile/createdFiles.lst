@@ -1,12 +1,15 @@
 DistanceImageBinarizer.class
 DfsBinaryGroupFinder.class
+VideoCsvWriter.class
 Coordinate.class
 ColorDistanceFinder.class
 DfsBinaryGroupFinder$Point.class
 EuclideanColorDistance.class
+VideoProcessorApp.class
 BinarizingImageGroupFinder.class
 ImageGroupFinder.class
 ImageSummaryApp.class
+VideoProcessor.class
 BinaryGroupFinder.class
 ImageBinarizer.class
 Group.class

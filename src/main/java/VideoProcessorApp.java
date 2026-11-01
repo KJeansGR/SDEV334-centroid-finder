@@ -1,16 +1,27 @@
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The main entry point for the video centroid processing application.
+ *
+ * Parses command-line arguments, configures the image-processing
+ * dependencies, and coordinates video processing and CSV output.
+ *
+ * Usage:
+ * java -jar videoprocessor.jar <input> <outputCsv> <hexColor> <threshold>
+ */
 public class VideoProcessorApp {
+    
+    /**
+     * Starts the application using the supplied command-line arguments.
+     *
+     * @param args the input video path, output CSV path,
+     *             target RGB hex color, and color-distance threshold
+     */
     public static void main(String[] args) {
-
-        
+     
         if (args.length != 4) {
-            System.err.println(
-                "Usage: java -jar videoprocessor.jar " +
-                "<input> <outputCsv> <hexColor> <threshold>"
-            );
+            System.err.println( "Usage: java -jar videoprocessor.jar " + "<input> <outputCsv> <hexColor> <threshold>" );
             return;
         }
 
@@ -19,10 +30,6 @@ public class VideoProcessorApp {
         String hexColor = args[2];
         String thresholdText = args[3];
 
-        ///////////////////////////////////////////////////////////////
-        List<String> toCSV = new ArrayList<>();
-
-        //create a frame grabber to isolate frames as images
         // Parse the target color from a hex string (format RRGGBB) into a 24-bit integer (0xRRGGBB)
         String hexTargetColor = hexColor;
         int targetColor = 0;
@@ -34,37 +41,25 @@ public class VideoProcessorApp {
         }
 
         // Parse the threshold from the command-line argument.
-        int threshold = Integer.parseInt(thresholdText  );
+        int threshold = Integer.parseInt(thresholdText);
         
         // Create the DistanceImageBinarizer with a EuclideanColorDistance instance.
         ColorDistanceFinder distanceFinder = new EuclideanColorDistance();
         ImageBinarizer binarizer = new DistanceImageBinarizer(distanceFinder, targetColor, threshold);
         ImageGroupFinder groupFinder = new BinarizingImageGroupFinder(binarizer, new DfsBinaryGroupFinder());
         
-        //Helper object class to process video that returns a List of timestamp & coordinate pairs representing frames of the video
+
+
+        List<String> toCSV = new ArrayList<>();
+        VideoCsvWriter writer = new VideoCsvWriter(outputPath);
 
         try{
             VideoProcessor vp = new VideoProcessor(groupFinder);
-            toCSV = vp.Process(videoPath);
+            toCSV = vp.process(videoPath);
+            writer.writeGroups(toCSV);
+
         }catch(Exception e){
             System.err.println("Error processing video: " + e.getMessage());
         }
-        
-        ///////////////////////////////////////////////////////////////
-
-
-        ///////////////////////////////////////////////////////////////
-        // Write the groups information to a CSV file "VideoGroups.csv".
-        try (PrintWriter writer = new PrintWriter(outputPath)) {
-            for (String entry : toCSV) {
-                writer.println(entry);
-            }
-            System.out.println("Groups summary saved as " + outputPath);
-        } catch (Exception e) {
-            System.err.println("Error writing " + outputPath);
-            e.printStackTrace();
-        }
-        ///////////////////////////////////////////////////////////////
-    
     }
 }
