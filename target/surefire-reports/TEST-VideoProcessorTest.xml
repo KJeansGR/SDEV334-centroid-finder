@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="VideoProcessorTest" time="1.344" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="26"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\KJean\OneDrive\Desktop\Homework\SDEV334\SDEV334-centroid-finder\target\test-classes;C:\Users\KJean\OneDrive\Desktop\Homework\SDEV334\SDEV334-centroid-finder\target\classes;C:\Users\KJean\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\KJean\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\KJean\.m2\repository\org\junit\jupiter\junit-jupiter\5.13.4\junit-jupiter-5.13.4.jar;C:\Users\KJean\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.13.4\junit-jupiter-api-5.13.4.jar;C:\Users\KJean\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\KJean\.m2\repository\org\junit\platform\junit-platform-commons\1.13.4\junit-platform-commons-1.13.4.jar;C:\Users\KJean\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.13.4\junit-jupiter-params-5.13.4.jar;C:\Users\KJean\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.13.4\junit-jupiter-engine-5.13.4.jar;C:\Users\KJean\.m2\repository\org\junit\vintage\junit-vintage-engine\5.13.4\junit-vintage-engine-5.13.4.jar;C:\Users\KJean\.m2\repository\org\junit\platform\junit-platform-engine\1.13.4\junit-platform-engine-1.13.4.jar;C:\Users\KJean\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacv-platform\1.5.14\javacv-platform-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacv\1.5.14\javacv-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect2\0.2.0-1.5.9\libfreenect2-0.2.0-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\videoinput\0.200-1.5.9\videoinput-0.200-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp-platform\1.5.14\javacpp-platform-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-ios-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-ios-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-linux-ppc64le.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-linux-riscv64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-macosx-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-windows-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas-platform\0.3.34-1.5.14\openblas-platform-0.3.34-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-ios-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-ios-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-macosx-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv-platform\4.14.0-1.5.14\opencv-platform-4.14.0-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-ios-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-ios-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-macosx-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg-platform\8.1.2-1.5.14\ffmpeg-platform-8.1.2-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-macosx-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture-platform\2.13.3.31-1.5.9\flycapture-platform-2.13.3.31-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9-linux-armhf.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394-platform\2.2.6-1.5.9\libdc1394-platform-2.2.6-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-linux-armhf.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-linux-ppc64le.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect-platform\0.5.7-1.5.9\libfreenect-platform-0.5.7-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-linux-armhf.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-linux-ppc64le.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect2-platform\0.2.0-1.5.9\libfreenect2-platform-0.2.0-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect2\0.2.0-1.5.9\libfreenect2-0.2.0-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect2\0.2.0-1.5.9\libfreenect2-0.2.0-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect2\0.2.0-1.5.9\libfreenect2-0.2.0-1.5.9-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect2\0.2.0-1.5.9\libfreenect2-0.2.0-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense-platform\1.12.4-1.5.9\librealsense-platform-1.12.4-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-linux-armhf.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2-platform\2.53.1-1.5.9\librealsense2-platform-2.53.1-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-linux-armhf.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\videoinput-platform\0.200-1.5.9\videoinput-platform-0.200-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\videoinput\0.200-1.5.9\videoinput-0.200-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\videoinput\0.200-1.5.9\videoinput-0.200-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus-platform\2.3.1-1.5.9\artoolkitplus-platform-2.3.1-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-android-arm.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-android-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-linux-armhf.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-linux-ppc64le.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica-platform\1.87.0-1.5.14\leptonica-platform-1.87.0-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-macosx-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract-platform\5.5.3-1.5.14\tesseract-platform-5.5.3-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-macosx-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-windows-x86_64.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="26"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\JavaJDK\jdk-26\bin"/>
+    <property name="sun.java.command" value="C:\Users\KJean\AppData\Local\Temp\surefire9891476459502247426\surefirebooter-20261102180949134_3.jar C:\Users\KJean\AppData\Local\Temp\surefire9891476459502247426 2026-11-02T18-09-49_069-jvmRun1 surefire-20261102180949134_1tmp surefire_0-20261102180949134_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\KJean\OneDrive\Desktop\Homework\SDEV334\SDEV334-centroid-finder\target\test-classes;C:\Users\KJean\OneDrive\Desktop\Homework\SDEV334\SDEV334-centroid-finder\target\classes;C:\Users\KJean\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\KJean\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\KJean\.m2\repository\org\junit\jupiter\junit-jupiter\5.13.4\junit-jupiter-5.13.4.jar;C:\Users\KJean\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.13.4\junit-jupiter-api-5.13.4.jar;C:\Users\KJean\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\KJean\.m2\repository\org\junit\platform\junit-platform-commons\1.13.4\junit-platform-commons-1.13.4.jar;C:\Users\KJean\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.13.4\junit-jupiter-params-5.13.4.jar;C:\Users\KJean\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.13.4\junit-jupiter-engine-5.13.4.jar;C:\Users\KJean\.m2\repository\org\junit\vintage\junit-vintage-engine\5.13.4\junit-vintage-engine-5.13.4.jar;C:\Users\KJean\.m2\repository\org\junit\platform\junit-platform-engine\1.13.4\junit-platform-engine-1.13.4.jar;C:\Users\KJean\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacv-platform\1.5.14\javacv-platform-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacv\1.5.14\javacv-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect2\0.2.0-1.5.9\libfreenect2-0.2.0-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\videoinput\0.200-1.5.9\videoinput-0.200-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp-platform\1.5.14\javacpp-platform-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-ios-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-ios-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-linux-ppc64le.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-linux-riscv64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-macosx-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-windows-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\javacpp\1.5.14\javacpp-1.5.14-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas-platform\0.3.34-1.5.14\openblas-platform-0.3.34-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-ios-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-ios-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-macosx-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\openblas\0.3.34-1.5.14\openblas-0.3.34-1.5.14-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv-platform\4.14.0-1.5.14\opencv-platform-4.14.0-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-ios-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-ios-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-macosx-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\opencv\4.14.0-1.5.14\opencv-4.14.0-1.5.14-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg-platform\8.1.2-1.5.14\ffmpeg-platform-8.1.2-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-macosx-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\ffmpeg\8.1.2-1.5.14\ffmpeg-8.1.2-1.5.14-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture-platform\2.13.3.31-1.5.9\flycapture-platform-2.13.3.31-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9-linux-armhf.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\flycapture\2.13.3.31-1.5.9\flycapture-2.13.3.31-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394-platform\2.2.6-1.5.9\libdc1394-platform-2.2.6-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-linux-armhf.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-linux-ppc64le.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libdc1394\2.2.6-1.5.9\libdc1394-2.2.6-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect-platform\0.5.7-1.5.9\libfreenect-platform-0.5.7-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-linux-armhf.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-linux-ppc64le.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect\0.5.7-1.5.9\libfreenect-0.5.7-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect2-platform\0.2.0-1.5.9\libfreenect2-platform-0.2.0-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect2\0.2.0-1.5.9\libfreenect2-0.2.0-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect2\0.2.0-1.5.9\libfreenect2-0.2.0-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect2\0.2.0-1.5.9\libfreenect2-0.2.0-1.5.9-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\libfreenect2\0.2.0-1.5.9\libfreenect2-0.2.0-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense-platform\1.12.4-1.5.9\librealsense-platform-1.12.4-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-linux-armhf.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense\1.12.4-1.5.9\librealsense-1.12.4-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2-platform\2.53.1-1.5.9\librealsense2-platform-2.53.1-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-linux-armhf.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\librealsense2\2.53.1-1.5.9\librealsense2-2.53.1-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\videoinput-platform\0.200-1.5.9\videoinput-platform-0.200-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\videoinput\0.200-1.5.9\videoinput-0.200-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\videoinput\0.200-1.5.9\videoinput-0.200-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus-platform\2.3.1-1.5.9\artoolkitplus-platform-2.3.1-1.5.9.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-android-arm.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-android-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-linux-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-linux-armhf.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-linux-ppc64le.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-windows-x86.jar;C:\Users\KJean\.m2\repository\org\bytedeco\artoolkitplus\2.3.1-1.5.9\artoolkitplus-2.3.1-1.5.9-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica-platform\1.87.0-1.5.14\leptonica-platform-1.87.0-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-macosx-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\leptonica\1.87.0-1.5.14\leptonica-1.87.0-1.5.14-windows-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract-platform\5.5.3-1.5.14\tesseract-platform-5.5.3-1.5.14.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-android-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-android-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-linux-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-linux-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-macosx-arm64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-macosx-x86_64.jar;C:\Users\KJean\.m2\repository\org\bytedeco\tesseract\5.5.3-1.5.14\tesseract-5.5.3-1.5.14-windows-x86_64.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\KJean"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-03-17"/>
+    <property name="java.home" value="C:\JavaJDK\jdk-26"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\KJean\OneDrive\Desktop\Homework\SDEV334\SDEV334-centroid-finder"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\KJean\AppData\Local\Temp\surefire9891476459502247426\surefirebooter-20261102180949134_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="26+35-2893"/>
+    <property name="user.name" value="KJean"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\KJean\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\KJean\AppData\Local\Temp\"/>
+    <property name="java.version" value="26"/>
+    <property name="user.dir" value="C:\Users\KJean\OneDrive\Desktop\Homework\SDEV334\SDEV334-centroid-finder"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\JavaJDK\jdk-26\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\KJean\bin;C:\Users\KJean\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\KJean\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\dotnet;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Users\KJean\AppData\Local\Microsoft\WindowsApps;C:\Users\KJean\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\KJean\AppData\Roaming\npm;C:\JavaJDK\jdk-26\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit;C:\Users\KJean\OneDrive\Desktop\Dev\maven\apache-maven-3.10.0-bin\apache-maven-3.10.0\bin;C:\Users\KJean\AppData\Local\Microsoft\WindowsApps;C:\Users\KJean\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\KJean\AppData\Roaming\npm;C:\Users\KJean\.dotnet\tools;C:\Users\KJean\AppData\Local\Programs\Microsoft VS Code\bin\copilot-shim;C:\Users\KJean\OneDrive\Desktop\Dev\maven\apache-maven-3.10.0-bin\apache-maven-3.10.0\bin;C:\Users\KJean\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;C:\Users\KJean\AppData\Local\Programs\Microsoft VS Code\bin\copilot-shim;C:\Users\KJean\.vscode\extensions\vscjava.vscode-java-debug-0.60.0\bundled\scripts\noConfigScripts;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="26+35-2893"/>
+    <property name="stdin.encoding" value="Cp1252"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="70.0"/>
+  </properties>
+  <testcase name="testExistingVideo" classname="VideoProcessorTest" time="1.343">
+    <system-out><![CDATA[Connected groups found: 0 | Processing frame: 1
+Connected groups found: 0 | Processing frame: 2
+Connected groups found: 0 | Processing frame: 3
+Connected groups found: 0 | Processing frame: 4
+Connected groups found: 0 | Processing frame: 5
+Connected groups found: 0 | Processing frame: 6
+Connected groups found: 0 | Processing frame: 7
+Connected groups found: 0 | Processing frame: 8
+Connected groups found: 0 | Processing frame: 9
+Connected groups found: 0 | Processing frame: 10
+Connected groups found: 0 | Processing frame: 11
+Connected groups found: 0 | Processing frame: 12
+Connected groups found: 0 | Processing frame: 13
+Connected groups found: 0 | Processing frame: 14
+Connected groups found: 0 | Processing frame: 15
+Connected groups found: 0 | Processing frame: 16
+Connected groups found: 0 | Processing frame: 17
+Connected groups found: 0 | Processing frame: 18
+Connected groups found: 0 | Processing frame: 19
+Connected groups found: 0 | Processing frame: 20
+Connected groups found: 0 | Processing frame: 21
+Connected groups found: 0 | Processing frame: 22
+Connected groups found: 0 | Processing frame: 23
+Connected groups found: 0 | Processing frame: 24
+Connected groups found: 0 | Processing frame: 25
+Connected groups found: 0 | Processing frame: 26
+Connected groups found: 0 | Processing frame: 27
+Connected groups found: 0 | Processing frame: 28
+Connected groups found: 0 | Processing frame: 29
+Connected groups found: 0 | Processing frame: 30
+Connected groups found: 0 | Processing frame: 31
+Connected groups found: 0 | Processing frame: 32
+Connected groups found: 0 | Processing frame: 33
+Connected groups found: 0 | Processing frame: 34
+Connected groups found: 0 | Processing frame: 35
+Connected groups found: 0 | Processing frame: 36
+Connected groups found: 0 | Processing frame: 37
+Connected groups found: 0 | Processing frame: 38
+Connected groups found: 0 | Processing frame: 39
+Connected groups found: 0 | Processing frame: 40
+Connected groups found: 0 | Processing frame: 41
+Connected groups found: 0 | Processing frame: 42
+Connected groups found: 0 | Processing frame: 43
+Connected groups found: 0 | Processing frame: 44
+Connected groups found: 0 | Processing frame: 45
+Connected groups found: 0 | Processing frame: 46
+Connected groups found: 0 | Processing frame: 47
+Connected groups found: 0 | Processing frame: 48
+Connected groups found: 0 | Processing frame: 49
+Connected groups found: 0 | Processing frame: 50
+Connected groups found: 0 | Processing frame: 51
+Connected groups found: 0 | Processing frame: 52
+Connected groups found: 0 | Processing frame: 53
+Connected groups found: 0 | Processing frame: 54
+Connected groups found: 0 | Processing frame: 55
+Connected groups found: 0 | Processing frame: 56
+Connected groups found: 0 | Processing frame: 57
+Connected groups found: 0 | Processing frame: 58
+Connected groups found: 0 | Processing frame: 59
+Connected groups found: 0 | Processing frame: 60
+Connected groups found: 0 | Processing frame: 61
+Connected groups found: 0 | Processing frame: 62
+Connected groups found: 0 | Processing frame: 63
+Connected groups found: 0 | Processing frame: 64
+Connected groups found: 0 | Processing frame: 65
+Connected groups found: 0 | Processing frame: 66
+Connected groups found: 0 | Processing frame: 67
+Connected groups found: 0 | Processing frame: 68
+Connected groups found: 0 | Processing frame: 69
+Connected groups found: 0 | Processing frame: 70
+Connected groups found: 0 | Processing frame: 71
+Connected groups found: 0 | Processing frame: 72
+Connected groups found: 0 | Processing frame: 73
+Connected groups found: 0 | Processing frame: 74
+Connected groups found: 0 | Processing frame: 75
+Connected groups found: 0 | Processing frame: 76
+Connected groups found: 0 | Processing frame: 77
+Connected groups found: 0 | Processing frame: 78
+Connected groups found: 0 | Processing frame: 79
+Connected groups found: 0 | Processing frame: 80
+Connected groups found: 0 | Processing frame: 81
+Connected groups found: 0 | Processing frame: 82
+Connected groups found: 0 | Processing frame: 83
+Connected groups found: 0 | Processing frame: 84
+Connected groups found: 0 | Processing frame: 85
+Connected groups found: 0 | Processing frame: 86
+Connected groups found: 0 | Processing frame: 87
+Connected groups found: 0 | Processing frame: 88
+Connected groups found: 0 | Processing frame: 89
+Connected groups found: 0 | Processing frame: 90
+Connected groups found: 0 | Processing frame: 91
+Connected groups found: 0 | Processing frame: 92
+Connected groups found: 0 | Processing frame: 93
+Connected groups found: 0 | Processing frame: 94
+Connected groups found: 0 | Processing frame: 95
+Connected groups found: 0 | Processing frame: 96
+Connected groups found: 0 | Processing frame: 97
+Connected groups found: 0 | Processing frame: 98
+Connected groups found: 0 | Processing frame: 99
+Connected groups found: 0 | Processing frame: 100
+Connected groups found: 0 | Processing frame: 101
+Connected groups found: 0 | Processing frame: 102
+Connected groups found: 0 | Processing frame: 103
+Connected groups found: 0 | Processing frame: 104
+Connected groups found: 0 | Processing frame: 105
+Connected groups found: 0 | Processing frame: 106
+Connected groups found: 0 | Processing frame: 107
+Connected groups found: 0 | Processing frame: 108
+Connected groups found: 0 | Processing frame: 109
+Connected groups found: 0 | Processing frame: 110
+Connected groups found: 0 | Processing frame: 111
+Connected groups found: 0 | Processing frame: 112
+Connected groups found: 0 | Processing frame: 113
+Connected groups found: 0 | Processing frame: 114
+Connected groups found: 0 | Processing frame: 115
+Connected groups found: 0 | Processing frame: 116
+Connected groups found: 0 | Processing frame: 117
+Connected groups found: 0 | Processing frame: 118
+Connected groups found: 0 | Processing frame: 119
+Connected groups found: 0 | Processing frame: 120
+Connected groups found: 0 | Processing frame: 121
+Connected groups found: 0 | Processing frame: 122
+Connected groups found: 0 | Processing frame: 123
+Connected groups found: 0 | Processing frame: 124
+Connected groups found: 0 | Processing frame: 125
+Connected groups found: 0 | Processing frame: 126
+Connected groups found: 0 | Processing frame: 127
+Connected groups found: 0 | Processing frame: 128
+Connected groups found: 0 | Processing frame: 129
+Connected groups found: 0 | Processing frame: 130
+Connected groups found: 0 | Processing frame: 131
+Connected groups found: 0 | Processing frame: 132
+Connected groups found: 0 | Processing frame: 133
+Connected groups found: 0 | Processing frame: 134
+Connected groups found: 0 | Processing frame: 135
+Connected groups found: 0 | Processing frame: 136
+Connected groups found: 0 | Processing frame: 137
+Connected groups found: 0 | Processing frame: 138
+Connected groups found: 0 | Processing frame: 139
+Connected groups found: 0 | Processing frame: 140
+Connected groups found: 0 | Processing frame: 141
+Connected groups found: 0 | Processing frame: 142
+Connected groups found: 0 | Processing frame: 143
+Connected groups found: 0 | Processing frame: 144
+Connected groups found: 0 | Processing frame: 145
+Connected groups found: 0 | Processing frame: 146
+Connected groups found: 0 | Processing frame: 147
+Connected groups found: 0 | Processing frame: 148
+Connected groups found: 0 | Processing frame: 149
+Connected groups found: 0 | Processing frame: 150
+Connected groups found: 0 | Processing frame: 151
+Connected groups found: 0 | Processing frame: 152
+Connected groups found: 0 | Processing frame: 153
+Connected groups found: 0 | Processing frame: 154
+Connected groups found: 0 | Processing frame: 155
+Connected groups found: 0 | Processing frame: 156
+Connected groups found: 0 | Processing frame: 157
+Connected groups found: 0 | Processing frame: 158
+Connected groups found: 0 | Processing frame: 159
+Connected groups found: 0 | Processing frame: 160
+Connected groups found: 0 | Processing frame: 161
+Connected groups found: 0 | Processing frame: 162
+Connected groups found: 0 | Processing frame: 163
+Connected groups found: 0 | Processing frame: 164
+Connected groups found: 0 | Processing frame: 165
+Connected groups found: 0 | Processing frame: 166
+Connected groups found: 0 | Processing frame: 167
+Connected groups found: 0 | Processing frame: 168
+Connected groups found: 0 | Processing frame: 169
+Connected groups found: 0 | Processing frame: 170
+Connected groups found: 0 | Processing frame: 171
+Connected groups found: 0 | Processing frame: 172
+Connected groups found: 0 | Processing frame: 173
+Connected groups found: 0 | Processing frame: 174
+Connected groups found: 0 | Processing frame: 175
+Connected groups found: 0 | Processing frame: 176
+Connected groups found: 0 | Processing frame: 177
+Connected groups found: 0 | Processing frame: 178
+Connected groups found: 0 | Processing frame: 179
+Connected groups found: 0 | Processing frame: 180
+Connected groups found: 0 | Processing frame: 181
+Connected groups found: 0 | Processing frame: 182
+Connected groups found: 0 | Processing frame: 183
+Connected groups found: 0 | Processing frame: 184
+Connected groups found: 0 | Processing frame: 185
+Connected groups found: 0 | Processing frame: 186
+Connected groups found: 0 | Processing frame: 187
+Connected groups found: 0 | Processing frame: 188
+Connected groups found: 0 | Processing frame: 189
+Connected groups found: 0 | Processing frame: 190
+Connected groups found: 0 | Processing frame: 191
+Connected groups found: 0 | Processing frame: 192
+Connected groups found: 0 | Processing frame: 193
+Connected groups found: 0 | Processing frame: 194
+Connected groups found: 0 | Processing frame: 195
+Connected groups found: 0 | Processing frame: 196
+Connected groups found: 0 | Processing frame: 197
+Connected groups found: 0 | Processing frame: 198
+Connected groups found: 0 | Processing frame: 199
+Connected groups found: 0 | Processing frame: 200
+Connected groups found: 0 | Processing frame: 201
+Connected groups found: 0 | Processing frame: 202
+Connected groups found: 0 | Processing frame: 203
+Connected groups found: 0 | Processing frame: 204
+Connected groups found: 0 | Processing frame: 205
+Connected groups found: 0 | Processing frame: 206
+Connected groups found: 0 | Processing frame: 207
+Connected groups found: 0 | Processing frame: 208
+Connected groups found: 0 | Processing frame: 209
+Connected groups found: 0 | Processing frame: 210
+Connected groups found: 0 | Processing frame: 211
+Connected groups found: 0 | Processing frame: 212
+Connected groups found: 0 | Processing frame: 213
+Connected groups found: 0 | Processing frame: 214
+Connected groups found: 0 | Processing frame: 215
+Connected groups found: 0 | Processing frame: 216
+Connected groups found: 0 | Processing frame: 217
+Connected groups found: 0 | Processing frame: 218
+Connected groups found: 0 | Processing frame: 219
+Connected groups found: 0 | Processing frame: 220
+Connected groups found: 0 | Processing frame: 221
+Connected groups found: 0 | Processing frame: 222
+Connected groups found: 0 | Processing frame: 223
+Connected groups found: 0 | Processing frame: 224
+Connected groups found: 0 | Processing frame: 225
+Connected groups found: 0 | Processing frame: 226
+Connected groups found: 0 | Processing frame: 227
+Connected groups found: 0 | Processing frame: 228
+Connected groups found: 0 | Processing frame: 229
+Connected groups found: 0 | Processing frame: 230
+Connected groups found: 0 | Processing frame: 231
+Connected groups found: 0 | Processing frame: 232
+Connected groups found: 0 | Processing frame: 233
+Connected groups found: 0 | Processing frame: 234
+Connected groups found: 0 | Processing frame: 235
+Connected groups found: 0 | Processing frame: 236
+Connected groups found: 0 | Processing frame: 237
+Connected groups found: 0 | Processing frame: 238
+Connected groups found: 0 | Processing frame: 239
+Connected groups found: 0 | Processing frame: 240
+Connected groups found: 0 | Processing frame: 241
+Connected groups found: 0 | Processing frame: 242
+Connected groups found: 0 | Processing frame: 243
+Connected groups found: 0 | Processing frame: 244
+Connected groups found: 0 | Processing frame: 245
+Connected groups found: 0 | Processing frame: 246
+Connected groups found: 0 | Processing frame: 247
+Connected groups found: 0 | Processing frame: 248
+Connected groups found: 0 | Processing frame: 249
+Connected groups found: 0 | Processing frame: 250
+Connected groups found: 0 | Processing frame: 251
+Connected groups found: 0 | Processing frame: 252
+Connected groups found: 0 | Processing frame: 253
+Connected groups found: 0 | Processing frame: 254
+Connected groups found: 0 | Processing frame: 255
+Connected groups found: 0 | Processing frame: 256
+Connected groups found: 0 | Processing frame: 257
+Connected groups found: 0 | Processing frame: 258
+Connected groups found: 0 | Processing frame: 259
+Connected groups found: 0 | Processing frame: 260
+Connected groups found: 0 | Processing frame: 261
+Connected groups found: 0 | Processing frame: 262
+Connected groups found: 0 | Processing frame: 263
+Connected groups found: 0 | Processing frame: 264
+Connected groups found: 0 | Processing frame: 265
+Connected groups found: 0 | Processing frame: 266
+Connected groups found: 0 | Processing frame: 267
+Connected groups found: 0 | Processing frame: 268
+Connected groups found: 0 | Processing frame: 269
+Connected groups found: 0 | Processing frame: 270
+Connected groups found: 0 | Processing frame: 271
+Connected groups found: 0 | Processing frame: 272
+Connected groups found: 0 | Processing frame: 273
+Connected groups found: 0 | Processing frame: 274
+Connected groups found: 0 | Processing frame: 275
+Connected groups found: 0 | Processing frame: 276
+Connected groups found: 0 | Processing frame: 277
+Connected groups found: 0 | Processing frame: 278
+Connected groups found: 0 | Processing frame: 279
+Connected groups found: 0 | Processing frame: 280
+Connected groups found: 0 | Processing frame: 281
+Connected groups found: 0 | Processing frame: 282
+Connected groups found: 0 | Processing frame: 283
+Connected groups found: 0 | Processing frame: 284
+Connected groups found: 0 | Processing frame: 285
+Connected groups found: 0 | Processing frame: 286
+Connected groups found: 0 | Processing frame: 287
+Connected groups found: 0 | Processing frame: 288
+Connected groups found: 0 | Processing frame: 289
+Connected groups found: 0 | Processing frame: 290
+Connected groups found: 0 | Processing frame: 291
+Connected groups found: 0 | Processing frame: 292
+Connected groups found: 0 | Processing frame: 293
+Connected groups found: 0 | Processing frame: 294
+Connected groups found: 0 | Processing frame: 295
+Connected groups found: 0 | Processing frame: 296
+Connected groups found: 0 | Processing frame: 297
+Connected groups found: 0 | Processing frame: 298
+Connected groups found: 0 | Processing frame: 299
+Connected groups found: 0 | Processing frame: 300
+Connected groups found: 0 | Processing frame: 301
+Connected groups found: 0 | Processing frame: 302
+Connected groups found: 0 | Processing frame: 303
+Connected groups found: 0 | Processing frame: 304
+Connected groups found: 0 | Processing frame: 305
+Connected groups found: 0 | Processing frame: 306
+Connected groups found: 0 | Processing frame: 307
+Connected groups found: 0 | Processing frame: 308
+Connected groups found: 0 | Processing frame: 309
+Connected groups found: 0 | Processing frame: 310
+Connected groups found: 0 | Processing frame: 311
+Connected groups found: 0 | Processing frame: 312
+Connected groups found: 0 | Processing frame: 313
+Connected groups found: 0 | Processing frame: 314
+Connected groups found: 0 | Processing frame: 315
+Connected groups found: 0 | Processing frame: 316
+Connected groups found: 0 | Processing frame: 317
+Connected groups found: 0 | Processing frame: 318
+Connected groups found: 0 | Processing frame: 319
+Connected groups found: 0 | Processing frame: 320
+Connected groups found: 0 | Processing frame: 321
+Connected groups found: 0 | Processing frame: 322
+Connected groups found: 0 | Processing frame: 323
+Connected groups found: 0 | Processing frame: 324
+Connected groups found: 0 | Processing frame: 325
+Connected groups found: 0 | Processing frame: 326
+Connected groups found: 0 | Processing frame: 327
+Connected groups found: 0 | Processing frame: 328
+Connected groups found: 0 | Processing frame: 329
+Connected groups found: 0 | Processing frame: 330
+Connected groups found: 0 | Processing frame: 331
+Connected groups found: 0 | Processing frame: 332
+Connected groups found: 0 | Processing frame: 333
+Connected groups found: 0 | Processing frame: 334
+Connected groups found: 0 | Processing frame: 335
+Connected groups found: 0 | Processing frame: 336
+Connected groups found: 0 | Processing frame: 337
+Connected groups found: 0 | Processing frame: 338
+Connected groups found: 0 | Processing frame: 339
+Connected groups found: 0 | Processing frame: 340
+Connected groups found: 0 | Processing frame: 341
+Connected groups found: 0 | Processing frame: 342
+Connected groups found: 0 | Processing frame: 343
+Connected groups found: 0 | Processing frame: 344
+Connected groups found: 0 | Processing frame: 345
+Connected groups found: 0 | Processing frame: 346
+Connected groups found: 0 | Processing frame: 347
+Connected groups found: 0 | Processing frame: 348
+Total frames processed: 348
+]]></system-out>
+    <system-err><![CDATA[Info: avformat_open_input rejected some options:	Option: pixel_format, value: bgr24
+]]></system-err>
+  </testcase>
+</testsuite>
