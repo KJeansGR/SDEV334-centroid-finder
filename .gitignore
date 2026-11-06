@@ -27,3 +27,6 @@ replay_pid*
 output.csv
 
 tweakedBotChatHistory
+
+/target
+target/
