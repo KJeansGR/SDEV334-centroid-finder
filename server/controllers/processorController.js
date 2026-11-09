@@ -189,8 +189,8 @@ export const status = (req, res) =>{
         case "completed" :
             return res.status(200).json({success: true, message: `job COMPLETE! jobid: ${jobId} | job: ${JSON.stringify(job)}`});
         case "failed" :
-            return res.status(400).json({success: false, message: `job FAILED! jobid: ${jobId} | job: ${JSON.stringify(job)}`});
+            return res.status(200).json({success: false, message: `job FAILED! jobid: ${jobId} | job: ${JSON.stringify(job)}`});
         default :
-            return res.status(500).json({success: false, message: `server errror or mishap`});
+            return res.status(500).json({success: false, message: `unknown job mishap`});
     } 
 }
