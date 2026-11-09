@@ -6,7 +6,7 @@ export const home = (req, res)=>{
 };
 
 export const serverHealth = (req, res)=>{
-    res.send("Server is live!");
+    res.send("<h1>Server is live!</h1> <br> <strong>current available endpoints:</strong> <br> /health <br> /thumbnail/:filename <br> /api/videos <br> /process/:filename <br> /process/:jobId/status");
     console.log("server is live Hooray!");
 };
 

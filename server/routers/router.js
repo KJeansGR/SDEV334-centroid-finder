@@ -16,7 +16,7 @@ apiRouter.get("/videos", apiController.videos);
 
 // Processor router
 const processorRouter = new Router();
-processorRouter.post("/:filename", processorController.process);
+processorRouter.post("/:filename", processorController.processVideo);
 processorRouter.get("/:jobId/status", processorController.status);
 
 export { router, apiRouter, processorRouter };

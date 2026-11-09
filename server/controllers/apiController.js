@@ -22,17 +22,17 @@ export const videos = async (req, res)=>{
         });
 
     }  catch (error) {
-        if (error.code === "ENOTDIR") {
-            console.error("Path is not a directory");
+       if (error.code === "ENOTDIR") {
+            console.error("Path is not a directory: ", process.env.VIDEO_DIR);
         } else if (error.code === "ENOENT") {
-            console.error("Path does not exist");
+            console.error("Path does not exist: ", process.env.VIDEO_DIR);
         }else{
             console.log(error);
         }
         return res.status(500).json({success: false, message: `ERROR: Error reading video directory `});
     }   
-
 };
+
 async function getAvailableVideos(videoDir) {
 
     const entries = await fs.readdir(videoDir, { withFileTypes: true });
