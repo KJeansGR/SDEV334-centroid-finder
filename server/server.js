@@ -7,16 +7,19 @@ const app = express();
 
 //middleware
 app.use(express.json());
-
-// Load environment variables from .env file
-dotenv.config();
-
 //middleware to parse incoming request bodies so that we can access the data in req.body
 app.use(express.urlencoded({ extended: true }));
+// Load environment variables from .env file
+dotenv.config();
 
 //start server
 const PORT = Number(process.env.PORT) || 3000;
 
+//cool debugging middle ware that logs an incoming request and where it is requesting and the method
+app.use((req, res, next) =>{
+  console.log(`api endpoint reached: ${req.method} ${req.url}`);
+  next();
+})
 
 //mounting routers
 app.use("/", router);

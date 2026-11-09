@@ -10,32 +10,39 @@ export const videos = async (req, res)=>{
 
     if(!process.env.VIDEO_DIR){
         console.log("ERROR: no env value for video path");
-        return res.status(400).json({success: false, message: "No videos path provided"});
+        return res.status(500).json({success: false, message: "No videos path provided"});
     }
 
-    let entries = [];
     try {
-        entries = await fs.readdir(process.env.VIDEO_DIR, { withFileTypes: true });
-        
-        for (let entry of entries) {
-            console.log(`entry video: ${entry.name}`);
-        }
-        
-    } catch (error) {
+        const availableVideos = await getAvailableVideos(process.env.VIDEO_DIR);
+
+        return res.status(200).json({
+            success: true,
+            availableVideos
+        });
+
+    }  catch (error) {
         if (error.code === "ENOTDIR") {
             console.error("Path is not a directory");
         } else if (error.code === "ENOENT") {
             console.error("Path does not exist");
+        }else{
+            console.log(error);
         }
         return res.status(500).json({success: false, message: `ERROR: Error reading video directory `});
     }   
 
-    //this cleans the name because the actual entry returned containes a lot more data than just a clean name.
-    const availableVideos = entries.map(entry => entry.name.slice(0, entry.name.length));
-
-    return res.status(200).json({success: true, message: `SUCCESS: available videos:`,availableVideos});
 };
+async function getAvailableVideos(videoDir) {
 
+    const entries = await fs.readdir(videoDir, { withFileTypes: true });
+    
+    for (let entry of entries) {
+        console.log(`entry video: ${entry.name}`);
+    }
+    const availableVideos = entries.map(entry => entry.name);
+    return availableVideos;
+}
 
 /**
 //  * @description retrieves a single video by name
