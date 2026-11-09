@@ -33,7 +33,7 @@ export const videos = async (req, res)=>{
     //this cleans the name because the actual entry returned containes a lot more data than just a clean name.
     const availableVideos = entries.map(entry => entry.name.slice(0, entry.name.length));
 
-    return res.status(200).json({success: true, message: `SUCCESS: available videos: ${(availableVideos)} `});
+    return res.status(200).json({success: true, message: `SUCCESS: available videos:`,availableVideos});
 };
 
 
