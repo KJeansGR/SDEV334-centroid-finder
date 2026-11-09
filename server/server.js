@@ -15,8 +15,8 @@ dotenv.config();
 app.use(express.urlencoded({ extended: true }));
 
 //start server
-const PORT = process.env.PORT;
-const frontEndUrl = process.env.VITE_API_URL;
+const PORT = Number(process.env.PORT) || 3000;
+
 
 //mounting routers
 app.use("/", router);
@@ -24,8 +24,8 @@ app.use("/api", apiRouter);
 app.use("/process", processorRouter);
 
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${frontEndUrl}${PORT}`);
+const server = app.listen(PORT, () => {
+  console.log(`Server is listening at http://localhost:${PORT}`);
 });
 
 

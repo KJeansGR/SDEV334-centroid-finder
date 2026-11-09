@@ -18,14 +18,14 @@ The Express server will accept video-processing requests from the front end even
    - Validate the requested video exists in map and continue processing with centroid finder parameters.
    - Return an error if the video doesn't exist or the parameters are invalid.
 
-3. **Send requests to express server**
+3. **Prepare requests for processing**
    - Generate a UUID for each processing request.
-   - Store the UUID in a Map with the processing state and CSV result path.
-   - Return the job ID to the client as a success response
+   - Store the UUID in a Map with the processing state of request for polling, and CSV result path.
 
-4. **Begin processing wit centroid finder JAR**
+
+4. **Begin processing with centroid finder JAR**
    - Use Node.js `child_process` <-- (potentially something else to be learned, not locked in yet) to execute the centroid finder JAR file with the provided parameters.
-
+   - begin polling the JAR process for completion or failure. do this by checking using a timeout to check the value in the Map for the UUID key. if the value is still "processing" then continue polling. if the value is "complete" or "failed" then stop polling and return the result to the client.
 
 5. **Wait for Processor**
    - Detect when the Java process finishes or fails via a callback or event listener or polling function.

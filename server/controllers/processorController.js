@@ -1,6 +1,12 @@
 import crypto from "crypto";
 
-
+/**
+ * @description handles the processing of a video file by calling a Java JAR and returning a job ID for tracking
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 export const process = (req, res) =>{
 
     if(!req.params.filename){
@@ -18,6 +24,13 @@ export const process = (req, res) =>{
    const jobUUID = crypto.randomUUID();
     return res.status(200).json({success: true, message: `successfully started JAR process! file provided: ${fName} | Job-ID: ${jobUUID} `});  
 }
+
+/**
+ * @description handles the status of a video processing job by checking the job ID and returning the current status
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 export const status = (req, res) =>{
 
     if(!req.params.jobId){

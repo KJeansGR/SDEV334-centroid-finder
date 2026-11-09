@@ -10,6 +10,12 @@ export const serverHealth = (req, res)=>{
     console.log("server is live Hooray!");
 };
 
+/**
+ * @description handles the retrieval of a thumbnail for a video file by calling FFMpeg and returning the thumbnail metadata
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 export const thumbnail = (req, res)=>{
 
     /* 
