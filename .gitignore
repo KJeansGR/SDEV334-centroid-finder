@@ -24,11 +24,11 @@ hs_err_pid*
 replay_pid*
 
 /videos
-output.csv
-
-tweakedBotChatHistory
+/tweakedBotChatHistory
 
 /target
+# Maven build artifacts
 target/
 
-.env
+# Assignment video files
+*.mp4
