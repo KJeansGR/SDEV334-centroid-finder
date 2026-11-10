@@ -32,3 +32,5 @@ target/
 
 # Assignment video files
 *.mp4
+
+.env
