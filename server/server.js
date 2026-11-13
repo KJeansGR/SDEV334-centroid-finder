@@ -4,6 +4,7 @@ import app from "./app.js";
 // Load environment variables from .env file
 dotenv.config();
 
+
 //start server
 const PORT = Number(process.env.PORT) || 3000;
 

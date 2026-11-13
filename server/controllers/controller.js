@@ -82,10 +82,14 @@ export const thumbnail = async (req, res) => {
  * @returns {Promise<Buffer>} JPEG image data.
  */
 function extractThumbnail(videoPath) {
-
+    console.log(videoPath);
     return new Promise((resolve, reject) => {
 
-        const outputPath = path.resolve(process.env.CSV_OUTPUT_DIR, "thumbnail.JPEG");
+        // removes the .mp4 from the videoPath name for a cleaner save file
+        const videoName = path.parse(videoPath).name;
+
+        //resolve the output path for thumbnails
+        const outputPath = path.resolve(process.env.CSV_OUTPUT_DIR, `${videoName}-thumbnail.JPEG`);
 
         // child process for ffmpeg to extract a single frame and save to same folder as csv currently
         const child = spawn(ffmpegPath, [
@@ -109,7 +113,6 @@ function extractThumbnail(videoPath) {
                 reject(error);
             }
         });
-
     });
 }
 
