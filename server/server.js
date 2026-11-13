@@ -7,8 +7,6 @@ dotenv.config();
 //start server
 const PORT = Number(process.env.PORT) || 3000;
 
-
-
 app.listen(PORT, () => {
   console.log(`Server is listening at http://localhost:${PORT}`);
 });
