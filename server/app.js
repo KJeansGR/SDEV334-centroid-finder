@@ -1,6 +1,7 @@
 import express from 'express';
 import { router, apiRouter, processorRouter} from "./routers/router.js";
 import cors from "cors";
+import "dotenv/config";
 
 //configure Express.js app
 const app = express();
@@ -17,6 +18,10 @@ app.use((req, res, next) =>{
   console.log(`api endpoint reached: ${req.method} ${req.url}`);
   next();
 })
+app.use(
+  "/outputs",
+  express.static(process.env.CSV_OUTPUT_DIR)
+);
 
 //mounting routers
 app.use("/", router);

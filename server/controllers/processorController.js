@@ -46,10 +46,18 @@ export const processVideo = async (req, res) =>{
     */
 
     const videoFile = req.params.filename;
-    const outputCsv = req.query.outputCsv;
+    const outputCsv = req.query.outputCsv ?? "output.csv";
     const targetColor = req.query.targetColor;
     const threshold = req.query.threshold;
     
+    //regex makes sure csv name is cleaned and safe to use
+    if (!/^[a-zA-Z0-9_-]+\.csv$/i.test(outputCsv)) {
+    return res.status(400).json({
+        success: false,
+        message: "Invalid CSV filename"
+    });
+    }
+
     const jobUUID = crypto.randomUUID();
 
     //debug logging
@@ -140,8 +148,17 @@ export const processVideo = async (req, res) =>{
         console.log(`Job ${jobUUID}: ${job.status}`);
     });
 
-
-    return res.status(202).json({success: true, message: `successfully started JAR process! file provided: ${videoFile} | jar: ${process.env.JAR_PATH} | output: ${process.env.CSV_OUTPUT_DIR}/${outputCsv} | target color: ${targetColor} | threshold: ${threshold} | Job-ID: ${jobUUID} `});  
+        return res.status(202).json({
+        success: true,
+        jobId: jobUUID,
+        status: "processing",
+        message: `successfully started JAR process! 
+                    file provided: ${videoFile} | 
+                    jar: ${process.env.JAR_PATH} | 
+                    output: ${process.env.CSV_OUTPUT_DIR}/${outputCsv} | 
+                    target color: ${targetColor} | threshold: ${threshold} |
+                    Job-ID: ${jobUUID} `
+        });
 }
 
 async function getSingleVideo(videoDir, videoFile) {
@@ -183,14 +200,35 @@ export const status = (req, res) =>{
 
     const job = jobStore.get(jobId);
     
-    switch (job.status){
-        case "processing" :
-            return res.status(202).json({success: true, message: `job still PROCESSING! jobid: ${jobId} | job: ${JSON.stringify(job)}`});
-        case "completed" :
-            return res.status(200).json({success: true, message: `job COMPLETE! jobid: ${jobId} | job: ${JSON.stringify(job)}`});
-        case "failed" :
-            return res.status(200).json({success: false, message: `job FAILED! jobid: ${jobId} | job: ${JSON.stringify(job)}`});
-        default :
-            return res.status(500).json({success: false, message: `unknown job mishap`});
-    } 
+    switch (job.status) {
+        case "processing":
+            return res.status(202).json({
+            success: true,
+            jobId,
+            status: "processing"
+            });
+
+        case "completed":
+            return res.status(200).json({
+            success: true,
+            jobId,
+            status: "completed",
+            outputCsv: job.outputCsv,
+            csvUrl: `/outputs/${encodeURIComponent(job.outputCsv)}`
+            });
+
+        case "failed":
+            return res.status(200).json({
+            success: false,
+            jobId,
+            status: "failed",
+            error: job.error || "Video processing failed"
+            });
+
+        default:
+            return res.status(500).json({
+            success: false,
+            message: "Unknown job status"
+            });
+    }
 }

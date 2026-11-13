@@ -17,16 +17,23 @@ function drawCentroid(context, group) {
 }
 
 export default function VideoPreview() {
-  const { filename } = useParams();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [jobId, setJobId] = useState(null);
+    const [processError, setProcessError] = useState(null);
 
-  const originalCanvasRef = useRef(null);
-  const canvasRef = useRef(null);
+    const [jobStatus, setJobStatus] = useState(null);
+    const [csvUrl, setCsvUrl] = useState(null);
 
-  const [thumbnail, setThumbnail] = useState(null);
-  const [error, setError] = useState(null);
+    const { filename } = useParams();
 
-  const [targetColor, setTargetColor] = useState('#ffffff');
-  const [threshold, setThreshold] = useState(50);
+    const originalCanvasRef = useRef(null);
+    const canvasRef = useRef(null);
+
+    const [thumbnail, setThumbnail] = useState(null);
+    const [error, setError] = useState(null);
+
+    const [targetColor, setTargetColor] = useState('#ffffff');
+    const [threshold, setThreshold] = useState(50);
 
   // Fetch the selected video's thumbnail.
   useEffect(() => {
@@ -144,6 +151,117 @@ export default function VideoPreview() {
     };
   }, [thumbnail, targetColor, threshold]);
 
+
+    async function processVideo() {
+        setIsSubmitting(true);
+        setProcessError(null);
+        setJobId(null);
+        setJobStatus(null);
+        setCsvUrl(null);
+
+        const params = new URLSearchParams({
+            targetColor: targetColor.replace("#", ""),
+            threshold: String(threshold)
+        });
+
+        try {
+            const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/process/${encodeURIComponent(filename)}?${params}`,
+            { method: "POST" }
+            );
+
+            const data = await response.json();
+
+            if (!response.ok) {
+            throw new Error(data.message || "Processing failed");
+            }
+
+            if (!data.jobId) {
+            throw new Error("No job ID returned by the server");
+            }
+
+            setJobId(data.jobId);
+            setJobStatus("processing");
+
+        } catch (error) {
+            setProcessError(error.message);
+        } finally {
+            setIsSubmitting(false);
+        }
+    }
+
+
+
+    useEffect(() => {
+    if (!jobId) return;
+
+    const controller = new AbortController();
+    let timeoutId;
+    let stopped = false;
+
+    async function checkJobStatus() {
+        try {
+        const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/process/${encodeURIComponent(jobId)}/status`,
+            { signal: controller.signal }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to check job");
+        }
+
+        if (stopped) return;
+
+        if (data.status === "completed") {
+            if (!data.csvUrl) {
+            throw new Error("Completed job has no CSV URL");
+            }
+
+            setJobStatus("completed");
+
+            const baseUrl =
+            import.meta.env.VITE_API_URL.replace(/\/$/, "");
+
+            setCsvUrl(`${baseUrl}${data.csvUrl}`);
+            return;
+        }
+
+        if (data.status === "failed") {
+            setJobStatus("failed");
+            setProcessError(
+            data.error || "Video processing failed"
+            );
+            return;
+        }
+
+        if (data.status !== "processing") {
+            throw new Error("Unknown job status");
+        }
+
+        setJobStatus("processing");
+
+        // Check again in two seconds.
+        timeoutId = setTimeout(checkJobStatus, 2000);
+
+        } catch (err) {
+        if (!stopped && !controller.signal.aborted) {
+            setJobStatus("failed");
+            setProcessError(err.message);
+        }
+        }
+    }
+
+    checkJobStatus();
+
+    return () => {
+        stopped = true;
+        controller.abort();
+        clearTimeout(timeoutId);
+    };
+    }, [jobId]);
+
   return (
     <div>
       <Link to="/videos">Back to Videos</Link>
@@ -210,6 +328,48 @@ export default function VideoPreview() {
           />
         </div>
       </div>
+
+      <div>
+            <button
+                onClick={processVideo}
+                disabled={isSubmitting || !thumbnail}
+            >
+                {isSubmitting
+                ? "Submitting..."
+                : "Process Video with These Settings"}
+            </button>
+
+            {processError && (
+                <p role="alert">{processError}</p>
+            )}
+
+            {jobId && (
+            <div>
+                <p>Job ID: {jobId}</p>
+
+                {jobStatus === "processing" && (
+                <p>Processing video...</p>
+                )}
+
+                {jobStatus === "completed" && (
+                <div>
+                    <p>Video processing completed!</p>
+
+                    {csvUrl && (
+                    <a href={csvUrl} download>
+                        Download CSV Results
+                    </a>
+                    )}
+                </div>
+                )}
+
+                {jobStatus === "failed" && (
+                <p>Video processing failed.</p>
+                )}
+            </div>
+            )}
+        </div>
     </div>
+    
   );
 }
