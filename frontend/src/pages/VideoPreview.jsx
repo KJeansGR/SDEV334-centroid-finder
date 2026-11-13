@@ -1,18 +1,34 @@
-import { useEffect, useState } from 'react';
+
+import { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useRef } from 'react';
+
 import { binarizeImage } from '../utils/imageProcessing';
+import { findConnectedGroups } from '../utils/groupFinder';
+
+// Draw a centroid marker on the provided Canvas.
+function drawCentroid(context, group) {
+  if (!group) return;
+
+  context.beginPath();
+  context.arc(group.x, group.y, 22, 0, Math.PI * 2);
+
+  context.fillStyle = '#00FF00';
+  context.fill();
+}
 
 export default function VideoPreview() {
   const { filename } = useParams();
+
+  const originalCanvasRef = useRef(null);
   const canvasRef = useRef(null);
 
   const [thumbnail, setThumbnail] = useState(null);
   const [error, setError] = useState(null);
 
-  const [targetColor, setTargetColor] = useState("#FF0000");
+  const [targetColor, setTargetColor] = useState('#ffffff');
   const [threshold, setThreshold] = useState(50);
 
+  // Fetch the selected video's thumbnail.
   useEffect(() => {
     let imageUrl = null;
     const controller = new AbortController();
@@ -38,9 +54,9 @@ export default function VideoPreview() {
         imageUrl = URL.createObjectURL(imageBlob);
         setThumbnail(imageUrl);
 
-      } catch (error) {
-        if (error.name !== 'AbortError') {
-          setError(error.message);
+      } catch (err) {
+        if (!controller.signal.aborted) {
+          setError(err.message);
         }
       }
     }
@@ -56,103 +72,144 @@ export default function VideoPreview() {
     };
   }, [filename]);
 
+  // Generate the original and binarized previews.
   useEffect(() => {
-  if (!thumbnail) return;
+    if (!thumbnail) return;
 
-  const canvas = canvasRef.current;
-  if (!canvas) return;
+    const canvas = canvasRef.current;
+    const originalCanvas = originalCanvasRef.current;
 
-  const context = canvas.getContext('2d');
-  if (!context) return;
+    if (!canvas || !originalCanvas) return;
 
-  const image = new Image();
-  let cancelled = false;
+    const context = canvas.getContext('2d');
+    const originalContext = originalCanvas.getContext('2d');
 
-  image.onload = () => {
-    if (cancelled) return;
+    if (!context || !originalContext) return;
 
-    canvas.width = image.naturalWidth;
-    canvas.height = image.naturalHeight;
+    const image = new Image();
+    let cancelled = false;
 
-    context.drawImage(image, 0, 0);
+    image.onload = () => {
+      if (cancelled) return;
 
-    // Read the original pixels.
-    const imageData = context.getImageData(
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
+      const width = image.naturalWidth;
+      const height = image.naturalHeight;
 
-    // Run our JavaScript binarizer.
-    const { binaryImage } = binarizeImage(
-      imageData,
-      targetColor,
-      threshold
-    );
+      // Set both Canvas dimensions.
+      canvas.width = width;
+      canvas.height = height;
 
-    // Replace the Canvas contents.
-    context.putImageData(binaryImage, 0, 0);
-  };
+      originalCanvas.width = width;
+      originalCanvas.height = height;
 
-  image.src = thumbnail;
+      // Draw the original thumbnail.
+      originalContext.drawImage(image, 0, 0);
 
-  return () => {
-    cancelled = true;
-    image.onload = null;
-  };
-}, [thumbnail, targetColor, threshold]);
+      // Read the original pixel data.
+      const imageData = originalContext.getImageData(
+        0, 0, width, height
+      );
+
+      // Binarize the image.
+      const { binaryArray, binaryImage } = binarizeImage(
+        imageData,
+        targetColor,
+        threshold
+      );
+
+      // Find the largest connected group.
+      const groups = findConnectedGroups(binaryArray);
+      const largestGroup = groups[0];
+
+      // Draw the binarized image.
+      context.putImageData(binaryImage, 0, 0);
+
+      // Draw the centroid on both previews.
+      drawCentroid(context, largestGroup);
+      drawCentroid(originalContext, largestGroup);
+    };
+
+    image.onerror = () => {
+      if (!cancelled) {
+        setError('Failed to load thumbnail image');
+      }
+    };
+
+    image.src = thumbnail;
+
+    return () => {
+      cancelled = true;
+      image.onload = null;
+      image.onerror = null;
+    };
+  }, [thumbnail, targetColor, threshold]);
 
   return (
     <div>
-        <div>
+      <Link to="/videos">Back to Videos</Link>
+
+      <h2>Preview: {filename}</h2>
+
+      {error && <p role="alert">{error}</p>}
+
+      <div>
         <label htmlFor="targetColor">
-            Target Color:
+          Target Color:
         </label>
 
         <input
-            id="targetColor"
-            type="color"
-            value={targetColor}
-            onChange={(e) => setTargetColor(e.target.value)}
+          id="targetColor"
+          type="color"
+          value={targetColor}
+          onChange={(e) => setTargetColor(e.target.value)}
         />
 
         <label htmlFor="threshold">
-            Threshold: {threshold}
+          Threshold: {threshold}
         </label>
 
         <input
-            id="threshold"
-            type="range"
-            min="0"
-            max="442"
-            step="1"
-            value={threshold}
-            onChange={(e) => setThreshold(Number(e.target.value))}
+          id="threshold"
+          type="range"
+          min="0"
+          max="442"
+          step="1"
+          value={threshold}
+          onChange={(e) => setThreshold(Number(e.target.value))}
         />
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          gap: '16px',
+          flexWrap: 'wrap'
+        }}
+      >
+        <div>
+          <h3>Original Thumbnail</h3>
+          <canvas
+            ref={originalCanvasRef}
+            style={{
+              width: '360px',
+              maxWidth: '100%',
+              height: 'auto'
+            }}
+          />
         </div>
 
-        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
         <div>
-            <h3>Original Thumbnail</h3>
-            {thumbnail && (
-            <img
-                src={thumbnail}
-                alt="Original video thumbnail"
-                style={{ width: '360px', maxWidth: '100%' }}
-            />
-            )}
-        </div>
-
-        <div>
-            <h3>Binarized Preview</h3>
-            <canvas
+          <h3>Binarized Preview</h3>
+          <canvas
             ref={canvasRef}
-            style={{ width: '360px', maxWidth: '100%', height: 'auto' }}
-            />
+            style={{
+              width: '360px',
+              maxWidth: '100%',
+              height: 'auto'
+            }}
+          />
         </div>
-        </div>
-        
+      </div>
     </div>
   );
 }
