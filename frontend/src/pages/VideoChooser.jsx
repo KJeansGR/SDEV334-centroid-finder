@@ -1,15 +1,28 @@
+
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+
+import VideoList from '../components/VideoList';
+import withRequestState from '../hoc/withRequestState';
+
+// Create the enhanced component outside VideoChooser.
+const VideoListWithRequestState = withRequestState(VideoList);
 
 export default function VideoChooser() {
   const [vids, setVids] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     async function fetchVideos() {
+      setLoading(true);
+      setError(null);
+
       try {
         const result = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/videos`
+          `${import.meta.env.VITE_API_URL}/api/videos`,
+          { signal: controller.signal }
         );
 
         if (!result.ok) {
@@ -18,29 +31,40 @@ export default function VideoChooser() {
 
         const vidsObj = await result.json();
 
-        setVids(vidsObj.availableVideos);
+        if (!Array.isArray(vidsObj.availableVideos)) {
+          throw new Error('Invalid video list response');
+        }
 
-      } catch (error) {
-        setError(error.message);
+        if (!controller.signal.aborted) {
+          setVids(vidsObj.availableVideos);
+        }
+
+      } catch (err) {
+        if (!controller.signal.aborted) {
+          setError(err.message);
+        }
+
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
       }
     }
 
     fetchVideos();
+
+    return () => controller.abort();
   }, []);
 
   return (
-    <div>
+    <section>
       <h2>Available Videos</h2>
 
-      {error && <p>{error}</p>}
-
-      {vids.map((video) => (
-        <div key={video}>
-          <Link to={`/preview/${encodeURIComponent(video)}`}>
-            {video}
-          </Link>
-        </div>
-      ))}
-    </div>
+      <VideoListWithRequestState
+        videos={vids}
+        loading={loading}
+        error={error}
+      />
+    </section>
   );
 }
