@@ -58,8 +58,6 @@ export default function VideoChooser() {
 
   return (
     <section>
-      <h2>Available Videos</h2>
-
       <VideoListWithRequestState
         videos={vids}
         loading={loading}

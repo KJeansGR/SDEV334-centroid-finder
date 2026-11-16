@@ -1,5 +1,6 @@
 
 /**
+ * HIGHER ORDER COMPONENT 
  * Higher-Order Component that handles
  * loading and error states.
  *

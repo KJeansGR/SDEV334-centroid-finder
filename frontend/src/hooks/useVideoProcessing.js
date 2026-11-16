@@ -29,6 +29,7 @@ export function useVideoProcessing(filename) {
   async function submitVideo(targetColor, threshold) {
     if (isSubmitting) return;
 
+    //refernece the abort controller in useRef to be able to acces this controller outside the specific useEffect later if needed
     const controller = new AbortController();
     submitControllerRef.current = controller;
 
@@ -38,6 +39,7 @@ export function useVideoProcessing(filename) {
     setJobStatus(null);
     setCsvUrl(null);
 
+    //build url
     const params = new URLSearchParams({
       targetColor: targetColor.replace('#', ''),
       threshold: String(threshold)
@@ -62,6 +64,7 @@ export function useVideoProcessing(filename) {
         throw new Error('No job ID returned by the server');
       }
 
+      //early exit/abort
       if (controller.signal.aborted) return;
 
       setJobId(data.jobId);

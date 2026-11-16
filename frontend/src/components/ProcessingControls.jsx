@@ -1,4 +1,11 @@
 
+import {
+  Paper,
+  Stack,
+  Typography,
+  Slider
+} from '@mui/material';
+
 export default function ProcessingControls({
   targetColor,
   setTargetColor,
@@ -6,31 +13,48 @@ export default function ProcessingControls({
   setThreshold
 }) {
   return (
-    <section>
-      <label htmlFor="targetColor">
-        Target Color:
-      </label>
+    <Paper sx={{ p: 3, my: 3 }}>
+      <Typography variant="h6" gutterBottom>
+        Detection Settings
+      </Typography>
 
-      <input
-        id="targetColor"
-        type="color"
-        value={targetColor}
-        onChange={(e) => setTargetColor(e.target.value)}
-      />
+      <Stack spacing={3}>
+        <Stack direction="row" spacing={2} alignItems="center">
+          <Typography
+            component="label"
+            htmlFor="targetColor"
+          >
+            Target Color:
+          </Typography>
 
-      <label htmlFor="threshold">
-        Threshold: {threshold}
-      </label>
+          <input
+            id="targetColor"
+            type="color"
+            value={targetColor}
+            onChange={(e) => setTargetColor(e.target.value)}
+          />
 
-      <input
-        id="threshold"
-        type="range"
-        min="0"
-        max="442"
-        step="1"
-        value={threshold}
-        onChange={(e) => setThreshold(Number(e.target.value))}
-      />
-    </section>
+          <Typography variant="body2">
+            {targetColor.toUpperCase()}
+          </Typography>
+        </Stack>
+
+        <div>
+          <Typography id="threshold-label" gutterBottom>
+            Threshold: {threshold}
+          </Typography>
+
+          <Slider
+            aria-labelledby="threshold-label"
+            value={threshold}
+            min={0}
+            max={442}
+            step={1}
+            onChange={(_, newValue) => setThreshold(newValue)}
+            valueLabelDisplay="auto"
+          />
+        </div>
+      </Stack>
+    </Paper>
   );
 }

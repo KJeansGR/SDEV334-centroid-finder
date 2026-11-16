@@ -29,7 +29,8 @@ export default function PreviewCanvases({
 
     const originalCanvas = originalCanvasRef.current;
     const canvas = canvasRef.current;
-
+    
+    //if either canvas is null return
     if (!originalCanvas || !canvas) return;
 
     const originalContext = originalCanvas.getContext('2d');
