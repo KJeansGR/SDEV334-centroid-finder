@@ -7,7 +7,7 @@ function App() {
   return (
       <Routes>
         <Route element={<MainLayout />}>
-          <Route path="/" element={<Navigate to="/videos" replace />} />
+          <Route path="/" element={<Navigate to="/" replace />} />
           <Route path="/videos" element={<VideoChooser />} />
           <Route path="/preview/:filename" element={<VideoPreview />} />
         </Route>

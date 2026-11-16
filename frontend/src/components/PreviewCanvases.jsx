@@ -3,15 +3,20 @@ import { useEffect, useRef } from 'react';
 
 import { binarizeImage } from '../utils/imageProcessing';
 import { findConnectedGroups } from '../utils/groupFinder';
+import { useColorStore } from '../utils/useColorStore';
+
 
 
 // Draw the largest group's centroid.
-function drawCentroid(context, group) {
+function drawCentroid(context, group, centroidColor) {
   if (!group) return;
 
+  //zustand stuff for centroid color Personal touch
+
+  
   context.beginPath();
   context.arc(group.x, group.y, 22, 0, Math.PI * 2);
-  context.fillStyle = '#00FF00';
+  context.fillStyle = centroidColor;
   context.fill();
 }
 
@@ -23,13 +28,16 @@ export default function PreviewCanvases({
 }) {
   const originalCanvasRef = useRef(null);
   const canvasRef = useRef(null);
+  const centroidColor = useColorStore((state) => state.centroidColor);
+
 
   useEffect(() => {
     if (!thumbnail) return;
 
     const originalCanvas = originalCanvasRef.current;
     const canvas = canvasRef.current;
-
+    
+    //if either canvas is null return
     if (!originalCanvas || !canvas) return;
 
     const originalContext = originalCanvas.getContext('2d');
@@ -73,8 +81,8 @@ export default function PreviewCanvases({
       context.putImageData(binaryImage, 0, 0);
 
       // Draw the same centroid on both images.
-      drawCentroid(context, largestGroup);
-      drawCentroid(originalContext, largestGroup);
+      drawCentroid(context, largestGroup,centroidColor);
+      drawCentroid(originalContext, largestGroup,centroidColor);
     };
 
     image.onerror = () => {
@@ -90,7 +98,7 @@ export default function PreviewCanvases({
       image.onload = null;
       image.onerror = null;
     };
-  }, [thumbnail, targetColor, threshold, onImageError]);
+  }, [thumbnail, targetColor, threshold, onImageError, centroidColor]);
 
   return (
     <div

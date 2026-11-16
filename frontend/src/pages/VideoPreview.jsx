@@ -1,11 +1,11 @@
 
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import PreviewCanvases from '../components/PreviewCanvases';
 import ProcessingControls from '../components/ProcessingControls';
 import { useVideoProcessing } from '../hooks/useVideoProcessing';
 import JobStatus from '../components/JobStatus';
-
+import { Button } from '@mui/material';
 export default function VideoPreview() {
     const { filename } = useParams();
     const [thumbnail, setThumbnail] = useState(null);
@@ -90,14 +90,17 @@ export default function VideoPreview() {
         )}
 
       <div>
-            <button
+          <Button
+            variant="contained"
+            size="large"
             onClick={() => submitVideo(targetColor, threshold)}
             disabled={isSubmitting || !thumbnail}
-            >
-                {isSubmitting
-                ? "Submitting..."
-                : "Process Video with These Settings"}
-            </button>
+            sx={{ mt: 3, mb: 2 }}
+          >
+            {isSubmitting
+              ? 'Submitting...'
+              : 'Process Video with These Settings'}
+          </Button>
             <JobStatus
                 jobId={jobId}
                 jobStatus={jobStatus}
