@@ -1,15 +1,16 @@
 # Installation and usage
 
 ## **CLONE REPO**
+
 ```
 git clone https://github.com/KJeansGR/SDEV334-centroid-finder.git
 ```
 
 <br />
-<br />
 <hr>
 <br />
-<br />
+
+
 ## **FRONT END**
 
 ### 1. enter the frontend directory, and basic npm install:
@@ -24,7 +25,6 @@ npm install<br /><br />
 ```
  VITE_API_URL=http://localhost:3000
 ```
-
 
 ### 3. Start the development server:
 
@@ -45,9 +45,7 @@ npm run dev
 
 
 <br />
-<br />
 <hr>
-<br />
 <br />
 
 ## **BACK END (EXPRESS SERVER)**
@@ -89,11 +87,8 @@ npm run dev
 > http://localhost:3000/health<br />
 
 <br />
-<br />
 <hr>
 <br />
-<br />
-
 
 ## **JAVA PROCESSOR**
 
