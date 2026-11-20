@@ -154,3 +154,100 @@ You can choose to keep track of state either with a database or directly on the 
 
 ## Wave 3: Implementing & Testing
 Start working on implementing! You can use an AI for help, but do not just copy-paste things without understanding them. I WILL BE ASKING YOU TO EXPLAIN YOUR CODE. Make tests as you work, and make many commits along the way! Do not wait for your frontend to be ready to do testing. Do both unit testing, and use tools like PostmanLinks to an external site. for validating requests and inspecting responses. However, as you make progress on your frontend, you will want to start doing integration testing as well.
+
+<hr>
+
+# centroid-finder Part 4
+
+## Overall Goal:
+In this part of the project you will get a chance to improve your existing code. You will NOT be adding any new features for this phase of the project. Instead, you will be refactoring code, fixing bugs, adding tests, improving performance, improving error handling, hardening security, and writing documentation.
+
+You will also practice more sophisticated use of AI, git branches, pull requests, and merge conflict resolution.
+
+### Wave 1: Setup
+Begin by merging your image branch into your main branch. This will mean that your main branch will have all of the newest updates to your code. However, please do not delete your other branches yet; I will be still looking at them to grade other parts of your project.
+
+### Wave 2: Human Improvements - DO THIS WITHOUT AI
+In this wave you will work with your partner to identify areas your code can be improved.
+
+Make a file called humanImprovements.md. You will complete this file WITHOUT AI. Find the issues WITHOUT AI and write the file WITHOUT AI.
+
+Work with your partner to review your code. Actually go back and look at all your files again! Take a look at your server code/tests, java code/tests, package.json, and pom.xml. Identify ways your code could be improved. As you go through, answer the below questions. You do not need to write full sentences, bullet points are fine. Again, do this WITHOUT AI. Make commits as you go. Spend a good deal of time on this!
+
+- refactoring code
+    - What improvements can you make to the design/architecture of your code?
+    - How can you split up large methods or classes into smaller components?
+    - Are there unused files/methods that can be removed?
+    - Where would additional Java interfaces be appropriate?
+    - How can you make things simpler, more-usable, and easier to maintain?
+    - Other refactoring improvements?
+- adding tests
+    - What portions of your code are untested / only lightly tested?
+    - Where would be the highest priority places to add new tests?
+    - Other testing improvements?
+- improving error handling
+    - What parts of your code are brittle?
+    - Where could you better be using exceptions?
+    - Where can you better add input validation to check invalid input?
+    - How can you better be resolving/logging/surfacing errors? Hint: almost any place - you're using "throwsException" or "catch(Exception e)" should likely be improved to specify the specific types of exceptions that -- might be thrown or caught.
+    - Other error handling improvements?
+- writing documentation
+    - What portions of your code are missing Javadoc/JSdoc for the methods/classes?
+    - What documentation could be made clearer or improved?
+    - Are there sections of dead code that are commented out?
+    - Where would be the most important places to add documentation to make your code easier to read?
+    - Other documentation improvements?
+- improving performance (optional)
+    - What parts of your code / tests run particularly slowly?
+    - What speed improvements would most make running / maintaining your code better?
+    - Other performance improvements?
+- hardening security (optional)
+    - What packages / images are out of date / have security issues?
+    - Where could you have better input validation in your code to prevent malicious use?
+    - Other security improvements?
+- bug fixes (optional)
+    - What bugs do you know exist?
+    - What parts of the code do you think might be causing them?
+    - Other bug fix improvements?
+- other
+    - Any other improvements in general you could make?
+
+### Wave 3: AI Improvements
+In this wave you will work with AI to help you identify improvements. BE SKEPTICAL OF WHAT IT SUGGESTS! Think for yourself, do not just accept everything it says!!!
+
+Make a file robotImprovements.md . Then follow the below steps to use GitHub Copilot to give you suggestions.
+
+Open the command palette in VS code (ctrl+shift+p) or (cmd+shift+p).
+Type Chat: Open Chat (Ask) and hit enter
+This should open a Copilot chat. Make sure you've connected your GitHub account to your VS Code. A default GitHub account gets 50 free chat messages per month, a student developer pack account would get you more.
+In the chat window, use the paper clip to attach the relevant folders and files. Include server code/tests, java code/tests, package.json, and pom.xml. DO NOT INCLUDE COMPILED FILES OR EXTERNAL PACKAGES LIKE node_modules
+In the chat, send this message: Please look through this code and identify improvements I could make. Focus on things like refactoring code, fixing bugs, adding tests, improving performance, improving error handling, hardening security, and writing documentation. Please do not write the exact code fixes. Instead give me overall direction on what I should be focusing on.
+Consider the response that comes back. You can chat with the AI to get further clarifications (though do remember the chat limit per month).
+Be skeptical! It may give you suggestions that are outdated, have poor coding/security practices, that would make your API incompatible with the front end, or that are far too large / ambitious in scope.
+Copy-paste the suggestions you consider the best into robotImprovements.md
+
+### Wave 4: Prioritization
+Make a file, priorityImprovements.md. In it, place the top two improvements that you and your partner think would be most important in each of the below categories. For items marked optional, it is OK if you did not identify any improvements. You can copy-paste directly from the human / robot improvement files.
+
+refactoring code (required)
+adding tests (required)
+improving error handling (required)
+writing documentation (required)
+improving performance (optional)
+hardening security (optional)
+bug fixes (optional)
+other (optional)
+Wave 5: Improving
+You must make at least 6 improvements. THERE MUST BE AT LEAST ONE IMPROVEMENT FROM EACH REQUIRED CATEGORY.
+
+For each improvement:
+
+MAKE A NEW BRANCH. Name the branch appropriately based off the improvement you're making.
+Make the improvement. If you are refactoring, I STRONGLY encourage you to add additional tests before making changes so that you will be able to catch any new bugs you introduce. As always, make and push frequent commits (to your branch) as you go.
+Test the improvement using your tests, manual commands, Postman, etc.
+Make a Pull Request from your branch to main branch of your repository. In the title of your PR, please include the category of this improvement. For example "Refactoring: extracted new ArgumentParser class from the main method of VideoProcessor"
+Have your partner review the pull request. They should look through your changes, and make comments on GitHub to suggest how to improve your code.
+Make appropriate changes based off your partner's feedback and push them to your branch. They will automatically show up in the PR.
+Once your partner is satisfied with your changes, they should comment LGTM (Looks good to me). The partner who made the PR and the partner who approves it must be different. You cannot approve your own PR!
+Merge the PR into main.
+Make sure to update any other active improvement branches you and your partner are working on by merging from main into your improvement branch. There will likely be merge conflicts to resolve, especially when you are refactoring! 
