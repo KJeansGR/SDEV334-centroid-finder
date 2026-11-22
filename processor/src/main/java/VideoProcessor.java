@@ -47,7 +47,22 @@ public class VideoProcessor {
     public List<String> process(String url) throws Exception {
         List<String> toCSV = new ArrayList<>();
 
-        //create a frame grabber to isolate frames as images
+        /*
+        * Try-with-resources(no catch block) automatically closes the FFmpegFrameGrabber
+        * when execution leaves this block, whether processing succeeds
+        * or an exception occurs.
+        *
+        * FFmpegFrameGrabber implements AutoCloseable, allowing Java to
+        * call grabber.close() automatically when the block finishes.
+        *
+        * If an exception occurs while opening or processing the video,
+        * the grabber is still closed and the exception propagates to
+        * VideoProcessorApp.run(), where it is handled and converted
+        * into a nonzero exit code.
+        *
+        * This prevents video-processing failures from being reported
+        * as successful executions while ensuring resources are released.
+        */
         try (FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(url)) {
 
             // converter is used to conver the grabber into a BufferedImage
@@ -78,11 +93,8 @@ public class VideoProcessor {
 
             System.out.println("Total frames processed: " + count);
             grabber.stop();
-
-        } catch (Exception e) {
-            System.err.println("Could not read the video: " + e.getMessage());
-            e.printStackTrace();
         }
+
         return toCSV;
     }
 }

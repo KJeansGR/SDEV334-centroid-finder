@@ -1,24 +1,16 @@
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.nio.file.Path;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 
 public class VideoProcessorAppTest {
-
-    @TempDir
-    Path tempDir;
 
     @Test
     void testMissingArguments() {
         String[] args = {"video.mp4"};
 
-        String output = captureErrors(args);
+        int exitCode = VideoProcessorApp.run(args);
 
-        assertTrue(output.contains("Usage:"));
+        assertEquals(1, exitCode);
     }
 
     @Test
@@ -27,25 +19,19 @@ public class VideoProcessorAppTest {
             "video.mp4", "output.csv", "NOTHEX", "50"
         };
 
-        String output = captureErrors(args);
+        int exitCode = VideoProcessorApp.run(args);
 
-        assertTrue(output.contains("Invalid hex target color"));
+        assertEquals(1, exitCode);
     }
 
-    // Helper method to capture System.err output.
-    private String captureErrors(String[] args) {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream originalErr = System.err;
+    @Test
+    void testInvalidThreshold() {
+        String[] args = {
+            "video.mp4", "output.csv", "FF0000", "banana"
+        };
 
-        try (PrintStream capture = new PrintStream(output)) {
-            System.setErr(capture);
+        int exitCode = VideoProcessorApp.run(args);
 
-            VideoProcessorApp.main(args);
-
-        } finally {
-            System.setErr(originalErr);
-        }
-
-        return output.toString();
+        assertEquals(1, exitCode);
     }
 }
