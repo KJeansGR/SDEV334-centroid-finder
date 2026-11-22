@@ -1,6 +1,8 @@
+import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * The main entry point for the video centroid processing application.
  *
@@ -20,15 +22,41 @@ public class VideoProcessorApp {
      */
     public static void main(String[] args) {
      
+        int exitCode = run(args);
+
+        if (exitCode != 0) {
+            System.exit(exitCode);
+        }
+
+    }
+
+    public static int run(String[] args){
+
         if (args.length != 4) {
             System.err.println( "Usage: java -jar videoprocessor.jar " + "<input> <outputCsv> <hexColor> <threshold>" );
-            return;
+            return 1;
         }
 
         String videoPath = args[0];
         String outputPath = args[1];
         String hexColor = args[2];
         String thresholdText = args[3];
+
+        Path inputFile;
+        try {
+            inputFile = Path.of(videoPath);
+        } catch (InvalidPathException e) {
+            System.err.println("Invalid video path: " + videoPath);
+            return 1;
+        }
+
+        if (!Files.isRegularFile(inputFile) ||
+            !Files.isReadable(inputFile)) {
+            System.err.println(
+                "Video file does not exist or is not readable: " + videoPath
+            );
+            return 1;
+        }
 
         // Parse the target color from a hex string (format RRGGBB) into a 24-bit integer (0xRRGGBB)
         String hexTargetColor = hexColor;
@@ -37,18 +65,23 @@ public class VideoProcessorApp {
             targetColor = Integer.parseInt(hexTargetColor, 16);
         } catch (NumberFormatException e) {
             System.err.println("Invalid hex target color. Please provide a color in RRGGBB format.");
-            return;
+            return 1;
         }
 
         // Parse the threshold from the command-line argument.
-        int threshold = Integer.parseInt(thresholdText);
+        int threshold;
+
+        try {
+            threshold = Integer.parseInt(thresholdText);
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid threshold. Please provide an integer.");
+            return 1;
+        }
         
         // Create the DistanceImageBinarizer with a EuclideanColorDistance instance.
         ColorDistanceFinder distanceFinder = new EuclideanColorDistance();
         ImageBinarizer binarizer = new DistanceImageBinarizer(distanceFinder, targetColor, threshold);
         ImageGroupFinder groupFinder = new BinarizingImageGroupFinder(binarizer, new DfsBinaryGroupFinder());
-        
-
 
         List<String> toCSV = new ArrayList<>();
         VideoCsvWriter writer = new VideoCsvWriter(outputPath);
@@ -60,6 +93,9 @@ public class VideoProcessorApp {
 
         }catch(Exception e){
             System.err.println("Error processing video: " + e.getMessage());
+            return 1;
         }
+
+        return 0;
     }
 }
