@@ -2,7 +2,7 @@ import crypto from "crypto";
 import fs from "fs/promises";
 import { spawn } from "node:child_process";
 import path from "node:path";
-
+import { parseProcessingParams } from "../utils/processingParams.js";
 
 /**
  * @description In-memory store for video processing jobs.
@@ -45,18 +45,27 @@ export const processVideo = async (req, res) =>{
             java -jar videoprocessor.jar ..\videos\FlowField_Example.mp4 output.csv 0000FF 50
     */
 
-    const videoFile = req.params.filename;
-    const outputCsv = req.query.outputCsv ?? "output.csv";
-    const targetColor = req.query.targetColor;
-    const threshold = req.query.threshold;
-    
-    //regex makes sure csv name is cleaned and safe to use
-    if (!/^[a-zA-Z0-9_-]+\.csv$/i.test(outputCsv)) {
-    return res.status(400).json({
-        success: false,
-        message: "Invalid CSV filename"
+  const validation = parseProcessingParams({
+        filename: req.params.filename,
+        outputCsv: req.query.outputCsv,
+        targetColor: req.query.targetColor,
+        threshold: req.query.threshold
     });
+
+    if (!validation.ok) {
+        return res.status(400).json({
+            success: false,
+            message: validation.message
+        });
     }
+
+    const {
+        videoFile,
+        outputCsv,
+        targetColor,
+        threshold
+    } = validation.params;
+
 
     const jobUUID = crypto.randomUUID();
 
@@ -105,8 +114,9 @@ export const processVideo = async (req, res) =>{
         process.env.VIDEO_DIR + "/" + videoFile,
         csvPath,
         targetColor,
-        threshold
+        String(threshold)
     ]);
+    
 
     // Java could not start or encountered a process error.
     child.on("error", (error) => {
