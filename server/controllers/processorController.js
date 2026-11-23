@@ -62,11 +62,6 @@ export const processVideo = async (req, res) =>{
     //debug logging
     console.log(`file provided: ${videoFile} | jar: ${process.env.JAR_PATH} | output: ${process.env.CSV_OUTPUT_DIR}/${outputCsv} | target color: ${targetColor} | threshold: ${threshold} | Job-ID: ${jobUUID} `);
 
-    if(!videoFile || !outputCsv || !targetColor || !threshold){
-        return res.status(400).json({success: false, message: "invalid configuration parameters provided | Correct usage: <FilePath: inputPath> <string name: outputCsv> <Hex: targetColor> <int: threshold>"});
-    }
-
-
     try {
         const valid = await getSingleVideo(process.env.VIDEO_DIR, videoFile);
 
