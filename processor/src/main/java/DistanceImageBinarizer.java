@@ -100,48 +100,4 @@ public class DistanceImageBinarizer implements ImageBinarizer {
         return testImg;
     }
 
-    public static void main(String[] args) {
-        int width = 10;
-        int height = 10;
-
-        int targetColor = 0x123456;
-        int threshold = 1;
-
-        BufferedImage testImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        boolean swap = true;
-        for(int r = 0; r < height ; r++ ){
-            for(int c = 0; c < width ; c++){
-                if(swap && c % 2 != 0){
-                    testImg.setRGB(c, r, 0x123456);
-                }
-                else if(!swap && c % 2 == 0){
-                    testImg.setRGB(c, r, 0x123456);
-                }
-                else{
-                    testImg.setRGB(c, r, 0x654321);
-                }
-                    //int colorNoAlpha = testImg.getRGB(c, r);
-                    //System.out.print(colorNoAlpha + " | " );
-            }
-            swap = !swap;
-           //System.out.println();
-        }
-        // try {
-
-        //     File file = new File("sampleInput\\squares.png");
-
-        //     testImg = ImageIO.read(file);
-
-        //     System.out.println("Image Dimensions: " + testImg.getWidth() + "x" + testImg.getHeight());
-
-        // } catch (IOException e) {
-        //     System.out.println("Error reading the image file: " + e.getMessage()); 
-        // }
-        
-        ColorDistanceFinder cdf = new EuclideanColorDistance(); 
-        DistanceImageBinarizer dib = new DistanceImageBinarizer(cdf, targetColor, threshold);
-
-        dib.toBinaryArray(testImg);
-
-    }
 }

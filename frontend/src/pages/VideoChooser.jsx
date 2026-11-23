@@ -13,6 +13,7 @@ export default function VideoChooser() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // console.trace('Current call stack:');
     const controller = new AbortController();
 
     async function fetchVideos() {

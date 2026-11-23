@@ -52,40 +52,4 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
 
         return eDist;
     }
-
-    public static void main(String[] args) {
-        EuclideanColorDistance d = new EuclideanColorDistance();
-
-        int colorA = 0xFFFFFF;
-        int colorB = 0x000000;
-
-        double val =  d.distance(colorA,colorB);
-
-
-        // int R1 = colorA >> 16 & 0xFF;
-        // int G1 = colorA >> 8  & 0xFF;
-        // int B1 = colorA  & 0xFF;
-
-        // int R2 = colorB >> 16 & 0xFF;
-        // int G2 = colorB >> 8  & 0xFF;
-        // int B2 = colorB & 0xFF;
-
-        // double eDist = Math.sqrt(
-        //     Math.pow(R1 - R2, 2) +
-        //     Math.pow(G1 - G2, 2) +
-        //     Math.pow(B1 - B2, 2)  
-        // );
-        // List<Integer> A = List.of(R1 , G1, B1);
-        // List<Integer> B = List.of(R2 , G2, B2);
-
-        // System.out.println("A:  "+A);
-        // System.out.println("B:  "+B);
-
-
-        // System.out.println(val);
-
-        //System.out.println(0x255 >> 4);
-        // System.out.println(120 << 16);
-
-    }
 }
