@@ -34,16 +34,6 @@ export const jobStore = new Map();
  * @returns 
  */
 export const processVideo = async (req, res) =>{
-    /* 
-        * do logic to run the java jar*
-        - create UUID and store in a map
-        - start jar and mark as processing in KVP map for all jobs
-        - return ok
-
-        - shape of the jar command :
-            java -jar videoprocessor.jar inputPath outputCsv targetColor threshold
-            java -jar videoprocessor.jar ..\videos\FlowField_Example.mp4 output.csv 0000FF 50
-    */
 
   const validation = parseProcessingParams({
         filename: req.params.filename,
@@ -192,12 +182,6 @@ async function getSingleVideo(videoDir, videoFile) {
  * @returns 
  */
 export const status = (req, res) =>{
-    /* 
-        * do logic to check job/processor status *
-        - query a db or search a collection to validate the existence of provided video
-        - return not ok if video doesnt exist
-        - if video ids are very unique maybe store that it is finished and already been verified to skip if verified to not return an error if a user searches for a already completed video
-    */
 
     if(!req.params.jobId){
         return res.status(400).json({success: false, message: "id not provided"});

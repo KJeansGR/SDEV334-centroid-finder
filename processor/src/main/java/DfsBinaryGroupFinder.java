@@ -36,10 +36,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
     */
     @Override
     public List<Group> findConnectedGroups(int[][] image) { 
-
-        // List<Group> answer = new ArrayList<>();
-
-        //make a graph of the image to traverse over to get the groups
+        // make a graph of the image to traverse over to get the groups
         // groups should all be unconnected islands so traversing the keys
         // and maintaining a visited set should identify valid islands of 
         // image pixals to make into groups 
@@ -56,8 +53,6 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
                 
                 ArrayList<Point> neighbors = getNeighbors(graph, image, curPoint);
                 graph.putIfAbsent(curPoint, neighbors);
-                
-                // System.out.println(curPoint+ "  |  Neighbors: "+  neighbors); // for debugging ONLY
             }
         }
 
@@ -74,10 +69,8 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
     
     /*
         Stack based BFS over a graph to identify pixel islands within the image matrix 
-
         loops over all keys of the graph and if it has not already been visited begin a 
         bfs and return the island as a Group
-
         Returs a List of groups made from the original image matrix
     */
     public List<Group> imageDFS(Map<Point, ArrayList<Point>> graph){
@@ -92,7 +85,6 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
             //Initial set up for dfs of a Key/Point
             stack.push(key);
             visited.add(key);
-            // ArrayList<Group> curGroupList = new ArrayList<>();
 
             int groupX = key.col();
             int groupY = key.row();
@@ -122,7 +114,6 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         Collections.sort(connectedGroupList);
         return connectedGroupList;
     }
-
 
     /* 
         gets the neighboring points of the provided Point 
@@ -154,18 +145,5 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
             }
         }
         return neighbors;
-    }
-
-    public void main(String[] args) {
-        int[][] testImgData = 
-        {
-                   // 0,1,2,3,4,5
-            /*0*/    {1,1,1,0,1,1},
-            /*1*/    {0,0,0,0,1,1},
-            /*2*/    {1,1,0,0,0,0},
-            /*3*/    {1,1,0,1,1,1},
-            /*4*/    {1,1,0,1,1,1},
-        };
-        findConnectedGroups(testImgData);
     }
 }

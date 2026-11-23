@@ -88,13 +88,12 @@ public class VideoProcessor {
                     toCSV.add(String.valueOf(seconds) + ",-1,-1" );
                 }
 
-                System.out.println(frameString);
+                //System.out.println(frameString);
             }
 
-            System.out.println("Total frames processed: " + count);
+            //System.out.println("Total frames processed: " + count);
             grabber.stop();
         }
-
         return toCSV;
     }
 }

@@ -39,9 +39,9 @@ From the repository root:
 
 ```sh
 mkdir -p videos
-
+```
 The resulting structure should look like:
-
+```
 SDEV334-centroid-finder/
 ├── frontend/
 ├── server/
